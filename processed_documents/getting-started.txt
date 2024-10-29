@@ -1,0 +1,22 @@
+Getting Started Guide
+
+Welcome to our platform! This guide will help you get up and running quickly.
+
+System Requirements:
+- Windows 10/11 or macOS 10.15+
+- 8GB RAM minimum (16GB recommended)
+- 4 CPU cores
+- 20GB free disk space
+
+Installation Steps:
+1. Download the installer from your account dashboard
+2. Run the installer package
+3. Follow the setup wizard
+4. Enter your license key
+5. Complete initial configuration
+
+First Steps:
+1. Create your first project
+2. Set up team members
+3. Configure integration settings
+4. Run the test suite

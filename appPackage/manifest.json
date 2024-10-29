@@ -2,29 +2,30 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
     "manifestVersion": "1.17",
     "version": "1.0.0",
-    "id": "${{TEAMS_APP_ID}}",
+    "id": "14bf8ac2-37a9-457e-8fdb-4843b98f86a9",
     "developer": {
-        "name": "Teams App, Inc.",
+        "name": "Damon's AI Chat Bot",
         "websiteUrl": "https://www.example.com",
         "privacyUrl": "https://www.example.com/privacy",
-        "termsOfUseUrl": "https://www.example.com/termofuse"
+        "termsOfUseUrl": "https://www.example.com/termsofuse",
+        "mpnId": ""
     },
     "icons": {
         "color": "color.png",
         "outline": "outline.png"
     },
     "name": {
-        "short": "AI Chat Bot${{APP_NAME_SUFFIX}}",
-        "full": "full name for AI Chat Bot"
+        "short": "AI Chat Bot",
+        "full": "AI Chat Bot powered by Azure OpenAI"
     },
     "description": {
-        "short": "short description for AI Chat Bot",
-        "full": "full description for AI Chat Bot"
+        "short": "AI assistant that helps answer questions using Azure OpenAI",
+        "full": "An AI-powered chat bot that leverages Azure OpenAI and Azure Cognitive Search to provide intelligent responses and help users find information."
     },
     "accentColor": "#FFFFFF",
     "bots": [
         {
-            "botId": "${{BOT_ID}}",
+            "botId": "14bf8ac2-37a9-457e-8fdb-4843b98f86a9",
             "scopes": [
                 "personal",
                 "team",
@@ -34,23 +35,35 @@
             "isNotificationOnly": false,
             "commandLists": [
                 {
-                  "scopes": ["personal", "team", "groupChat"],
-                  "commands": [
-                      {
-                          "title": "Hi",
-                          "description": "Say hi to the bot."
-                      }
-                  ]
+                    "scopes": [
+                        "personal",
+                        "team",
+                        "groupChat"
+                    ],
+                    "commands": [
+                        {
+                            "title": "help",
+                            "description": "Learn how to use the bot"
+                        },
+                        {
+                            "title": "Hi",
+                            "description": "Say hi to the bot"
+                        }
+                    ]
                 }
             ]
         }
     ],
-    "composeExtensions": [],
-    "configurableTabs": [],
-    "staticTabs": [],
     "permissions": [
-        "identity",
+        "identity", 
         "messageTeamMembers"
     ],
-    "validDomains": []
+    "validDomains": [
+        "token.botframework.com",
+        "*.ngrok.io"
+    ],
+    "webApplicationInfo": {
+        "id": "14bf8ac2-37a9-457e-8fdb-4843b98f86a9",
+        "resource": "https://api.botframework.com"
+    }
 }

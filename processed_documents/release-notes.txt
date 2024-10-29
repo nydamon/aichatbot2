@@ -1,0 +1,12 @@
+Release Notes - Version 2.0
+
+What's New:
+- Enhanced search capabilities
+- Improved user interface
+- Better performance
+- New API endpoints
+- Bug fixes and improvements
+
+Known Issues:
+- Minor display glitch in dark mode
+- Occasional delay in real-time updates

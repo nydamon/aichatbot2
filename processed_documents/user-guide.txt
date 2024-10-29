@@ -1,0 +1,12 @@
+User Guide
+Getting Started:
+1. System Requirements
+   - Windows 10 or later
+   - 8GB RAM minimum
+   - 100GB free disk space
+
+2. Installation Steps
+   a. Download the installer
+   b. Run setup.exe
+   c. Follow configuration wizard
+   d. Activate your license
