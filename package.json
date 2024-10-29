@@ -9,7 +9,13 @@
         "dev": "nodemon --exec ts-node src/index.ts",
         "build": "tsc",
         "test": "ts-node src/test-server.ts",
-        "clean": "rm -rf dist node_modules package-lock.json"
+        "clean": "rm -rf dist node_modules package-lock.json",
+        "test:azure": "ts-node src/test-azure-services.ts",
+        "setup:search": "ts-node src/setup-search-index.ts",
+        "inspect:search": "ts-node src/search-index-inspector.ts",
+        "upload:docs": "ts-node src/search-bulk-upload.ts",
+        "create:test-docs": "ts-node src/create-test-docs.ts"
+
     },
     "dependencies": {
         "@azure/core-auth": "^1.5.0",
@@ -22,6 +28,7 @@
     "devDependencies": {
         "@types/express": "^4.17.21",
         "@types/node": "^20.0.0",
+        "@types/restify": "^8.5.12",
         "nodemon": "^3.0.1",
         "ts-node": "^10.9.1",
         "typescript": "^5.0.0"
