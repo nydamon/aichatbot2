@@ -3,6 +3,7 @@ import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
 import { SearchClient } from '@azure/search-documents';
 import { BlobServiceClient, StorageSharedKeyCredential } from '@azure/storage-blob';
 import fetch from 'node-fetch';
+import pdf from 'pdf-parse';
 import { azureOpenAIConfig, azureSearchConfig, azureStorageConfig, credentialsConfig } from './config';
 
 // Define interfaces
@@ -33,7 +34,7 @@ export class TeamsBot extends ActivityHandler {
     
     // Constants can be declared and initialized immediately
     private readonly MAX_HISTORY_LENGTH = 10;
-    private readonly SUPPORTED_FILE_TYPES = ['.txt', '.md', '.csv', '.json'];
+    private readonly SUPPORTED_FILE_TYPES = ['.txt', '.md', '.csv', '.json', '.pdf'];
 
     constructor() {
         super();
@@ -154,62 +155,36 @@ export class TeamsBot extends ActivityHandler {
     }
 
     private async handleFileUpload(context: TurnContext): Promise<void> {
-        const attachment = context.activity.attachments?.[0];
-        if (!attachment) return;
+        if (!context.activity.attachments || context.activity.attachments.length === 0) {
+            await context.sendActivity('No attachments found.');
+            return;
+        }
+        const attachment = context.activity.attachments[0];
+        const fileExtension = attachment.name ? this.getFileExtension(attachment.name) : '';
+
+        if (!this.SUPPORTED_FILE_TYPES.includes(fileExtension)) {
+            await context.sendActivity('Unsupported file type.');
+            return;
+        }
 
         try {
-            await context.sendActivity('Processing your file...');
-
-            const fileExtension = this.getFileExtension(attachment.name || '');
-            if (!this.SUPPORTED_FILE_TYPES.includes(fileExtension)) {
-                await context.sendActivity(`Sorry, I can only process ${this.SUPPORTED_FILE_TYPES.join(', ')} files.`);
-                return;
-            }
-
             const fileContent = await this.downloadAttachment(attachment);
-            if (!fileContent) {
-                await context.sendActivity('Sorry, I couldn\'t download the file content.');
-                return;
+            let textContent = '';
+
+            if (fileExtension === '.pdf') {
+                const buffer = Buffer.from(fileContent, 'binary');
+                textContent = await this.extractTextFromPDF(buffer);
+            } else {
+                textContent = fileContent;
             }
 
-            const document: SearchDocument = {
-                id: `file-${Date.now()}`,
-                content: fileContent,
-                title: attachment.name || 'Uploaded File',
-                category: 'Uploaded Content',
-                timestamp: new Date().toISOString(),
-                fileType: fileExtension.replace('.', ''),
-                source: 'user-upload',
-                uploadedBy: context.activity.from.name || 'unknown',
-                fileName: attachment.name
-            };
-
-            await this.searchClient.uploadDocuments([document]);
-
-            const analysis = await this.analyzeContent(fileContent);
+            // Process the text content as needed
+            const analysis = await this.analyzeContent(textContent);
             await context.sendActivity(analysis);
 
-            // Store in conversation history
-            const conversationId = context.activity.conversation.id;
-            const history = this.conversationHistory.get(conversationId) || [];
-            history.push({
-                role: "system",
-                content: `User uploaded file: ${attachment.name}\nContent: ${fileContent.substring(0, 1000)}...`
-            });
-            this.conversationHistory.set(conversationId, history);
-
-            await context.sendActivity(MessageFactory.suggestedActions(
-                [
-                    'Summarize the content',
-                    'Extract key points',
-                    'Ask a specific question'
-                ],
-                'What would you like to know about the file?'
-            ));
-
         } catch (error) {
-            console.error('Error processing file:', error);
-            await context.sendActivity('Sorry, I encountered an error processing your file.');
+            console.error('Error handling file upload:', error);
+            await context.sendActivity('Failed to process the uploaded file.');
         }
     }
 
@@ -419,6 +394,16 @@ Try uploading a file or type /help to see available commands.`;
                     'What would you like to do?'
                 ));
             }
+        }
+    }
+
+    private async extractTextFromPDF(buffer: Buffer): Promise<string> {
+        try {
+            const data = await pdf(buffer);
+            return data.text;
+        } catch (error) {
+            console.error('Error extracting text from PDF:', error);
+            throw new Error('Failed to extract text from PDF');
         }
     }
 }
