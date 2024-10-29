@@ -15,12 +15,12 @@
         "inspect:search": "ts-node src/search-index-inspector.ts",
         "upload:docs": "ts-node src/search-bulk-upload.ts",
         "create:test-docs": "ts-node src/create-test-docs.ts"
-
     },
     "dependencies": {
         "@azure/core-auth": "^1.5.0",
         "@azure/openai": "^1.0.0-beta.11",
         "@azure/search-documents": "^12.0.0",
+        "@azure/storage-blob": "^12.25.0",
         "botbuilder": "^4.19.3",
         "dotenv": "^16.0.3",
         "express": "^4.18.2"

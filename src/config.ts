@@ -39,25 +39,30 @@ console.log('Environment Variables Check:', {
     }
 });
 
-const config = {
-    // Bot Framework Configuration
-    MicrosoftAppId: process.env.BOT_ID,
-    MicrosoftAppType: process.env.BOT_TYPE,
-    MicrosoftAppTenantId: process.env.BOT_TENANT_ID,
-    MicrosoftAppPassword: process.env.BOT_PASSWORD,
-    
-    // Azure OpenAI Configuration
-    azureOpenAI: {
-        endpoint: process.env.AZURE_OPENAI_ENDPOINT,
-        apiKey: process.env.AZURE_OPENAI_API_KEY,
-        deploymentName: process.env.AZURE_OPENAI_DEPLOYMENT_NAME
-    },
-    // Azure Search Configuration
-    azureSearch: {
-        endpoint: process.env.AZURE_SEARCH_ENDPOINT,
-        apiKey: process.env.AZURE_SEARCH_API_KEY,
-        indexName: process.env.AZURE_SEARCH_INDEX_NAME
-    }
+const azureOpenAIConfig = {
+    endpoint: process.env.AZURE_OPENAI_ENDPOINT,
+    apiKey: process.env.AZURE_OPENAI_API_KEY,
+    deploymentName: process.env.AZURE_OPENAI_DEPLOYMENT_NAME,
 };
 
-export default config;
+const azureSearchConfig = {
+    endpoint: process.env.AZURE_SEARCH_ENDPOINT,
+    apiKey: process.env.AZURE_SEARCH_API_KEY,
+    indexName: process.env.AZURE_SEARCH_INDEX_NAME,
+};
+
+const azureStorageConfig = {
+    accountName: process.env.AZURE_STORAGE_ACCOUNT_NAME,
+    accountKey: process.env.AZURE_STORAGE_KEY,
+};
+
+const credentialsConfig = {
+    CertificateThumbprint: process.env.CERTIFICATE_THUMBPRINT,
+    CertificatePrivateKey: process.env.CERTIFICATE_PRIVATE_KEY,
+    MicrosoftAppId: process.env.MICROSOFT_APP_ID,
+    MicrosoftAppPassword: process.env.MICROSOFT_APP_PASSWORD,
+    MicrosoftAppType: process.env.MICROSOFT_APP_TYPE,
+    MicrosoftAppTenantId: process.env.MICROSOFT_APP_TENANT_ID,
+};
+
+export { azureOpenAIConfig, azureSearchConfig, azureStorageConfig, credentialsConfig };
