@@ -25,6 +25,7 @@ interface SearchDocument {
     [key: string]: unknown;
 }
 
+
 export class TeamsBot extends ActivityHandler {
     // Use definite assignment assertions for required properties
     private openAIClient!: OpenAIClient;

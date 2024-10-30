@@ -6,7 +6,6 @@ import {
   TurnContext,
 } from "botbuilder";
 import { TeamsBot } from "./teamsBot";
-// import { config } from "./config"; // Removed because it is not exported from the module
 import { azureOpenAIConfig, azureSearchConfig, azureStorageConfig, credentialsConfig } from './config';
 import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
 import { SearchClient } from '@azure/search-documents';
