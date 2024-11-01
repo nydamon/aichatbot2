@@ -10,36 +10,32 @@
                 "Validate prerequisites (Test Tool)",
                 "Deploy (Test Tool)",
                 "Start application (Test Tool)",
-                "Start Test Tool",
+                "Start Test Tool"
             ],
             "dependsOrder": "sequence"
         },
         {
-            // Check all required prerequisites.
-            // See https://aka.ms/teamsfx-tasks/check-prerequisites to know the details and how to customize the args.
             "label": "Validate prerequisites (Test Tool)",
             "type": "teamsfx",
             "command": "debug-check-prerequisites",
             "args": {
                 "prerequisites": [
-                    "nodejs", // Validate if Node.js is installed.
-                    "portOccupancy" // Validate available ports to ensure those debug ones are not occupied.
+                    "nodejs",
+                    "portOccupancy"
                 ],
                 "portOccupancy": [
-                    3978, // app service port
-                    9239, // app inspector port for Node.js debugger
-                    56150, // test tool port
+                    3978,
+                    9239,
+                    56150
                 ]
             }
         },
         {
-            // Build project.
-            // See https://aka.ms/teamsfx-tasks/deploy to know the details and how to customize the args.
             "label": "Deploy (Test Tool)",
             "type": "teamsfx",
             "command": "deploy",
             "args": {
-                "env": "testtool",
+                "env": "testtool"
             }
         },
         {
@@ -48,7 +44,7 @@
             "command": "npm run dev:teamsfx:testtool",
             "isBackground": true,
             "options": {
-                "cwd": "${workspaceFolder}",
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": {
                 "pattern": [
@@ -73,7 +69,7 @@
             "isBackground": true,
             "options": {
                 "env": {
-                  "PATH": "${workspaceFolder}/devTools/teamsapptester/node_modules/.bin:${env:PATH}"
+                    "PATH": "${workspaceFolder}/devTools/teamsapptester/node_modules/.bin:${env:PATH}"
                 }
             },
             "windows": {
@@ -115,26 +111,22 @@
             "dependsOrder": "sequence"
         },
         {
-            // Check all required prerequisites.
-            // See https://aka.ms/teamsfx-tasks/check-prerequisites to know the details and how to customize the args.
             "label": "Validate prerequisites",
             "type": "teamsfx",
             "command": "debug-check-prerequisites",
             "args": {
                 "prerequisites": [
-                    "nodejs", // Validate if Node.js is installed.
-                    "m365Account", // Sign-in prompt for Microsoft 365 account, then validate if the account enables the sideloading permission.
-                    "portOccupancy" // Validate available ports to ensure those debug ones are not occupied.
+                    "nodejs",
+                    "m365Account",
+                    "portOccupancy"
                 ],
                 "portOccupancy": [
-                    3978, // app service port
-                    9239 // app inspector port for Node.js debugger
+                    3978,
+                    9239
                 ]
             }
         },
         {
-            // Start the local tunnel service to forward public URL to local port and inspect traffic.
-            // See https://aka.ms/teamsfx-tasks/local-tunnel for the detailed args definitions.
             "label": "Start local tunnel",
             "type": "teamsfx",
             "command": "debug-start-local-tunnel",
@@ -146,8 +138,8 @@
                         "protocol": "http",
                         "access": "public",
                         "writeToEnvironmentFile": {
-                            "endpoint": "BOT_ENDPOINT", // output tunnel endpoint as BOT_ENDPOINT
-                            "domain": "BOT_DOMAIN" // output tunnel domain as BOT_DOMAIN
+                            "endpoint": "BOT_ENDPOINT",
+                            "domain": "BOT_DOMAIN"
                         }
                     }
                 ],
@@ -157,8 +149,6 @@
             "problemMatcher": "$teamsfx-local-tunnel-watch"
         },
         {
-            // Create the debug resources.
-            // See https://aka.ms/teamsfx-tasks/provision to know the details and how to customize the args.
             "label": "Provision",
             "type": "teamsfx",
             "command": "provision",
@@ -167,8 +157,6 @@
             }
         },
         {
-            // Build project.
-            // See https://aka.ms/teamsfx-tasks/deploy to know the details and how to customize the args.
             "label": "Deploy",
             "type": "teamsfx",
             "command": "deploy",
@@ -227,6 +215,16 @@
             "args": {
                 "url": "teams.microsoft.com/l/app/${{TEAMS_APP_ID}}?installAppPackage=true"
             }
+        },
+        {
+            "type": "npm",
+            "script": "start",
+            "problemMatcher": [
+                "$func-watch"
+            ],
+            "label": "npm: start",
+            "detail": "ts-node src/index.ts",
+            "isBackground": true
         }
     ]
 }

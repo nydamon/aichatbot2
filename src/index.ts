@@ -1,82 +1,155 @@
+import * as path from 'path';
+import * as dotenv from 'dotenv';
 import express from 'express';
 import {
-  CloudAdapter,
-  ConfigurationServiceClientCredentialFactory,
-  ConfigurationBotFrameworkAuthentication,
-  TurnContext,
+    CloudAdapter,
+    ConfigurationServiceClientCredentialFactory,
+    ConfigurationBotFrameworkAuthentication,
+    TurnContext,
 } from "botbuilder";
 import { TeamsBot } from "./teamsBot";
-// import { config } from "./config"; // Removed because it is not exported from the module
-import { azureOpenAIConfig, azureSearchConfig, azureStorageConfig, credentialsConfig } from './config';
-import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
-import { SearchClient } from '@azure/search-documents';
-import { StorageSharedKeyCredential, BlobServiceClient } from '@azure/storage-blob';
+import { OpenAIService } from './services/OpenAIService';
+import { SearchService } from './services/SearchService';
+import { StorageService } from './services/StorageService';
+import { 
+    azureOpenAIConfig, 
+    azureSearchConfig, 
+    azureStorageConfig, 
+    credentialsConfig 
+} from './config/azure-config';
 
-// Initialize the credentials factory with the correct configuration
-const credentialsFactory = new ConfigurationServiceClientCredentialFactory(credentialsConfig);
+// Debug logs for environment loading
+console.log('Current directory:', process.cwd());
+console.log('Directory name:', __dirname);
 
-// Initialize other clients with their respective configurations
-if (!azureOpenAIConfig.endpoint || !azureOpenAIConfig.apiKey) {
-  throw new Error("Azure OpenAI configuration is missing endpoint or API key.");
+// Load environment variables at the very beginning
+const envPath = path.resolve(process.cwd(), 'env', 'env-dev');
+console.log('Attempting to load environment from:', envPath);
+
+try {
+    const result = dotenv.config({ path: envPath });
+    if (result.error) {
+        console.error('Error loading environment file:', result.error);
+        throw result.error;
+    }
+    console.log('Environment file loaded successfully');
+
+    // Verify environment variables are loaded
+    console.log('Environment Variables Check:', {
+        openai: {
+            endpoint: process.env.AZURE_OPENAI_ENDPOINT ? 'Set' : 'Not Set',
+            apiKey: process.env.AZURE_OPENAI_API_KEY ? 'Set' : 'Not Set',
+            deploymentName: process.env.AZURE_OPENAI_DEPLOYMENT_NAME ? 'Set' : 'Not Set'
+        },
+        search: {
+            endpoint: process.env.AZURE_SEARCH_ENDPOINT ? 'Set' : 'Not Set',
+            apiKey: process.env.AZURE_SEARCH_API_KEY ? 'Set' : 'Not Set'
+        },
+        storage: {
+            accountName: process.env.AZURE_STORAGE_ACCOUNT_NAME ? 'Set' : 'Not Set',
+            key: process.env.AZURE_STORAGE_KEY ? 'Set' : 'Not Set'
+        }
+    });
+
+} catch (error) {
+    console.error('Failed to load environment file:', error);
+    throw error;
 }
-const openAIClient = new OpenAIClient(azureOpenAIConfig.endpoint, new AzureKeyCredential(azureOpenAIConfig.apiKey));
 
-if (!azureSearchConfig.endpoint || !azureSearchConfig.indexName || !azureSearchConfig.apiKey) {
-  throw new Error("Azure Search configuration is missing endpoint, index name, or API key.");
-}
-const searchClient = new SearchClient(azureSearchConfig.endpoint, azureSearchConfig.indexName, new AzureKeyCredential(azureSearchConfig.apiKey));
-if (!azureStorageConfig.accountName || !azureStorageConfig.accountKey) {
-  throw new Error("Azure Storage configuration is missing account name or account key.");
-}
-const sharedKeyCredential = new StorageSharedKeyCredential(azureStorageConfig.accountName, azureStorageConfig.accountKey);
-const blobClient = new BlobServiceClient(`https://${azureStorageConfig.accountName}.blob.core.windows.net`, sharedKeyCredential);
-
-// Create Express server
+// Initialize services
 const app = express();
 
-// Parse JSON payloads
-app.use(express.json());
+try {
+    const openAIService = new OpenAIService();
+    const searchService = new SearchService();
+    const storageService = new StorageService();
+    console.log('Services initialized successfully');
 
-// Create adapter
-const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
-  {},
-  credentialsFactory
-);
-const adapter = new CloudAdapter(botFrameworkAuthentication);
+    // Initialize the credentials factory with the correct configuration
+    const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
+        MicrosoftAppId: credentialsConfig.MicrosoftAppId,
+        MicrosoftAppPassword: credentialsConfig.MicrosoftAppPassword,
+        MicrosoftAppTenantId: credentialsConfig.MicrosoftAppTenantId
+    });
 
-// Error handler
-const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
-  console.error(`\n [onTurnError] unhandled error: ${error}`);
-  console.error(error);
-  await context.sendActivity(`The bot encountered an error: ${error.message}`);
-};
+    // Create Express server
+    const app = express();
 
-adapter.onTurnError = onTurnErrorHandler;
+    // Parse JSON payloads
+    app.use(express.json());
 
-// Create the bot
-const bot = new TeamsBot();
+    // Create adapter
+    const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
+        {},
+        credentialsFactory
+    );
+    const adapter = new CloudAdapter(botFrameworkAuthentication);
 
-// Listen for incoming requests at /api/messages
-app.post('/api/messages', async (req, res) => {
-  console.log('Received message:', req.body);
-  await adapter.process(req, res, async (context) => {
-    await bot.run(context);
-  });
+    // Error handler
+    const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
+        console.error(`\n [onTurnError] unhandled error:`, error);
+        await context.sendActivity(`The bot encountered an error: ${error.message}`);
+    };
+
+    adapter.onTurnError = onTurnErrorHandler;
+
+    // Create the bot with dependencies
+    const bot = new TeamsBot(openAIService, searchService, storageService);
+
+    // Listen for incoming requests at /api/messages
+    app.post('/api/messages', async (req, res) => {
+        console.log('Received message:', req.body);
+        await adapter.process(req, res, async (context) => {
+            await bot.run(context);
+        });
+    });
+
+    // Health check endpoint
+    app.get('/health', (req, res) => {
+        res.json({ 
+            status: 'healthy', 
+            timestamp: new Date().toISOString(),
+            services: {
+                openai: azureOpenAIConfig.endpoint ? 'configured' : 'not configured',
+                search: azureSearchConfig.endpoint ? 'configured' : 'not configured',
+                storage: azureStorageConfig.accountName ? 'configured' : 'not configured'
+            },
+            environment: process.env.NODE_ENV || 'development'
+        });
+    });
+
+    // Add a root endpoint for testing
+    app.get('/', (req, res) => {
+        res.json({ 
+            status: 'Bot is running',
+            environment: process.env.NODE_ENV || 'development',
+            startTime: new Date().toISOString()
+        });
+    });
+
+    // Start the server
+    const PORT = process.env.PORT || 3978;
+    app.listen(PORT, () => {
+        console.log(`\nBot Started, listening at http://localhost:${PORT}`);
+        console.log(`- Bot Framework Messages: http://localhost:${PORT}/api/messages`);
+        console.log(`- Health Check: http://localhost:${PORT}/health`);
+    });
+
+} catch (error) {
+    console.error('Failed to initialize services:', error);
+    process.exit(1);
+}
+
+// Add graceful shutdown
+process.on('SIGTERM', () => {
+    console.log('SIGTERM received. Shutting down gracefully...');
+    process.exit(0);
 });
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+process.on('SIGINT', () => {
+    console.log('SIGINT received. Shutting down gracefully...');
+    process.exit(0);
 });
 
-// Add a root endpoint for testing
-app.get('/', (req, res) => {
-  res.json({ status: 'Bot is running' });
-});
-
-const PORT = process.env.PORT || 3978;
-app.listen(PORT, () => {
-  console.log(`\nBot Started, listening at http://localhost:${PORT}`);
-  console.log(`- Bot Framework Messages: http://localhost:${PORT}/api/messages`);
-  console.log(`- Health Check: http://localhost:${PORT}/health`);
-});
+// Export for testing purposes
+export { app };
