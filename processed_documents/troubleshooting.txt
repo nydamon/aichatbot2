@@ -1,0 +1,12 @@
+Troubleshooting Guide
+Common Issues:
+
+1. Connection Errors
+   - Check network connectivity
+   - Verify firewall settings
+   - Confirm API credentials
+
+2. Performance Issues
+   - Monitor system resources
+   - Check log files
+   - Clear cache if needed
