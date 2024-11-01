@@ -23,7 +23,7 @@ console.log('Current directory:', process.cwd());
 console.log('Directory name:', __dirname);
 
 // Load environment variables at the very beginning
-const envPath = path.resolve(process.cwd(), 'env', 'env-dev');
+const envPath = path.resolve(process.cwd(), 'env', '.env.dev');  // Changed from 'env-dev' to '.env.dev'
 console.log('Attempting to load environment from:', envPath);
 
 try {

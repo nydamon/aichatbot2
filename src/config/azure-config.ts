@@ -10,6 +10,7 @@ const envPath = path.resolve(process.cwd(), 'env', 'env-dev');
 console.log('Config - Loading environment from:', envPath);
 
 try {
+    const envPath = path.resolve(process.cwd(), 'env', '.env.dev');  // Changed from 'env-dev' to '.env.dev'
     const result = dotenv.config({ path: envPath });
     if (result.error) {
         throw result.error;
