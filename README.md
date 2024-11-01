@@ -73,3 +73,4 @@ Following documentation will help you to extend the Basic Bot template.
 - [Develop with Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli/debug)
 - [Preview the app on mobile clients](https://aka.ms/teamsfx-mobile)
 >>>>>>> 865ffbd (Your commit message)
+
