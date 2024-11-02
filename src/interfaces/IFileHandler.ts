@@ -10,15 +10,17 @@ export interface DocumentMetadata {
 }
 
 export interface FileUploadResult {
+    success: boolean;
     documentId: string;
     content: string;
+    error?: string;
     metadata: DocumentMetadata;
 }
 
 export interface IFileHandler {
     handleFileUpload(context: TurnContext): Promise<FileUploadResult[] | null>;
-    downloadAttachment(attachment: Attachment): Promise<Buffer>; // Make this public in the interface
-    extractTextFromPDF(buffer: Buffer): Promise<string>; //Ensure consistency in the interface and export
+    downloadAttachment(attachment: Attachment): Promise<Buffer>;
+    extractTextFromPDF(buffer: Buffer): Promise<string>;
     analyzeContent(content: string): Promise<string>;
 }
 

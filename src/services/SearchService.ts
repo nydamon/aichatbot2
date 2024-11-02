@@ -6,7 +6,14 @@ import {
 
 interface SearchDocument {
     id: string;
+    title?: string; // Ensure the title property is included
     content: string;
+    url?: string; // Ensure the url property is included
+    metadata?: {
+        fileName?: string;
+        contentType?: string;
+        size?: number;
+    };
 }
 
 interface SearchResultDocument {
@@ -33,7 +40,7 @@ export class SearchService {
         try {
             const searchOptions: SearchOptions<SearchDocument> = {
                 top: 5,
-                select: ['id', 'content']
+                select: ['id', 'title', 'content', 'url'] // Ensure url is selected
             };
 
             const searchResponse = await this.client.search(query, searchOptions);
@@ -53,6 +60,16 @@ export class SearchService {
                 details: error?.details
             });
             throw new Error('Failed to search documents');
+        }
+    }
+
+    async getDocument(documentId: string): Promise<SearchDocument | null> {
+        try {
+            const document = await this.client.getDocument(documentId);
+            return document;
+        } catch (error) {
+            console.error('Error fetching document:', error);
+            return null;
         }
     }
 }

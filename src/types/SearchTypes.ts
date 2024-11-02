@@ -1,13 +1,17 @@
 export interface SearchDocument {
     id: string;
+    title?: string; // Add the title property
     content: string;
-    title?: string;
-    category?: string;
+    url?: string; // Add the url property
+    metadata?: {
+        fileName?: string;
+        contentType?: string;
+        size?: number;
+    };
     timestamp: string;
     fileType?: string;
     source?: string;
     uploadedBy?: string;
-    fileName?: string;
     [key: string]: unknown;
 }
 
@@ -30,6 +34,7 @@ export interface SearchResultDocument {
     category?: string;
     content?: string;
     document: {
+        id: string;
         title?: string;
         category?: string;
         content?: string;
