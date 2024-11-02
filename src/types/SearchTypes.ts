@@ -25,6 +25,17 @@ export interface SearchResult {
     score?: number;
 }
 
+export interface SearchResultDocument {
+    title?: string;
+    category?: string;
+    content?: string;
+    document: {
+        title?: string;
+        category?: string;
+        content?: string;
+        };
+    }
+
 export interface SearchResponse {
     results: SearchResult[];
 }

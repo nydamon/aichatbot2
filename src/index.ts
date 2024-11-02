@@ -10,6 +10,7 @@ import {
 import { TeamsBot } from './teamsBot';
 import { OpenAIService } from './services/OpenAIService';
 import { StorageService } from './services/StorageService';
+import { SearchService } from './services/SearchService'; // Add this import
 import {
     azureOpenAIConfig,
     azureStorageConfig,
@@ -26,15 +27,16 @@ console.log('Loading environment from:', envPath);
 const app = express();
 
 // IMPORTANT: Add JSON body parser middleware to parse JSON request body
-app.use(express.json());  // <---- This is necessary to fix the req.body missing issue
+app.use(express.json());
 
 // Initialize services
 try {
     const openAIService = new OpenAIService();
     const storageService = new StorageService();
+    const searchService = new SearchService(); // Add this line
     
-    // Initialize the bot with only the required services
-    const bot = new TeamsBot(openAIService, storageService);
+    // Initialize the bot with all three services
+    const bot = new TeamsBot(openAIService, storageService, searchService); // Updated constructor call
 
     // Bot Framework adapter setup (configuration for Teams and other channels)
     const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
@@ -70,7 +72,8 @@ try {
             timestamp: new Date().toISOString(),
             services: {
                 openai: azureOpenAIConfig.endpoint ? 'configured' : 'not configured',
-                storage: azureStorageConfig.accountName ? 'configured' : 'not configured'
+                storage: azureStorageConfig.accountName ? 'configured' : 'not configured',
+                search: process.env.AZURE_SEARCH_ENDPOINT ? 'configured' : 'not configured' // Add search service status
             }
         });
     });
@@ -86,7 +89,7 @@ try {
     process.exit(1);
 }
 
-// Graceful shutdown
+// Graceful shutdown handlers remain the same
 process.on('SIGTERM', () => {
     console.log('SIGTERM received. Shutting down gracefully...');
     process.exit(0);

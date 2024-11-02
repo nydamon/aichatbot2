@@ -1,94 +1,114 @@
 import { TurnContext } from 'botbuilder';
-import { IMessageHandler } from '../interfaces/IMessageHandler';
+import { SearchService } from '../services/SearchService';
 import { OpenAIService } from '../services/OpenAIService';
-import { ConversationService } from '../services/ConversationService';
 import { ChatMessage } from '../types/ChatTypes';
+import { SearchResultDocument } from '../types/SearchTypes';
 
-export class MessageHandler implements IMessageHandler {
+export class MessageHandler {
+    private searchService: SearchService;
     private openAIService: OpenAIService;
-    private conversationService: ConversationService;
+    
+    private readonly SOP_PATTERNS = [
+        /do we have (a |an )?sop on/i,
+        /how do i/i,
+        /can (i|we|you)/i,
+        /is there (a |an )?procedure for/i,
+        /what( is|'s) the process for/i,
+        /where can i find/i
+    ];
 
-    constructor(
-        openAIService: OpenAIService,
-        conversationService: ConversationService
-    ) {
+    constructor(searchService: SearchService, openAIService: OpenAIService) {
+        this.searchService = searchService;
         this.openAIService = openAIService;
-        this.conversationService = conversationService;
     }
 
-    async handleMessage(context: TurnContext): Promise<void> {
-        const message = context.activity.text?.trim();
-        if (!message) return;
-
-        try {
-            const conversationId = context.activity.conversation.id;
-            const history = this.conversationService.getHistory(conversationId);
-
-            if (this.conversationService.hasRecentFileUpload(conversationId)) {
-                await this.handleFileQuery(context, history);
-            } else {
-                await this.handleGeneralQuery(context, history);
-            }
-        } catch (error) {
-            console.error('Error handling message:', error);
-            await context.sendActivity('I encountered an error processing your request.');
+    async handleMessage(context: TurnContext, history: ChatMessage[]): Promise<void> {
+        const messageText = context.activity.text || '';
+        
+        if (this.isSopInquiry(messageText)) {
+            await this.handleSopInquiry(context, messageText);
+        } else {
+            await this.handleGeneralQuery(context, history);
         }
     }
 
-    async handleGeneralQuery(context: TurnContext, history: ChatMessage[]): Promise<void> {
-        const query = context.activity.text;
-        if (!query) return;
+    private isSopInquiry(message: string): boolean {
+        return this.SOP_PATTERNS.some(pattern => pattern.test(message));
+    }
 
-        const messages: ChatMessage[] = [
-            {
-                role: "system",
-                content: "You are a helpful AI assistant in Microsoft Teams."
-            },
-            ...history,
-            {
-                role: "user",
-                content: query
-            }
-        ];
-
+    private async handleSopInquiry(context: TurnContext, message: string): Promise<void> {
         try {
-            const response = await this.openAIService.getChatCompletion(messages);
+            const query = this.extractSearchQuery(message);
+
+            if (!query) {
+                await this.requestClarification(context);
+                return;
+            }
+
+            const searchResults = await this.searchService.searchDocuments(query, {
+                top: 3
+            });
+
+            if (!searchResults.results || searchResults.results.length === 0) {
+                await context.sendActivity(
+                    "I couldn't find any specific SOPs or procedures for that. " +
+                    "Could you please rephrase your question or provide more details?"
+                );
+                return;
+            }
+
+            const response = this.formatSearchResults(searchResults.results);
             await context.sendActivity(response);
 
-            if (response) {
-                this.conversationService.addMessage(context.activity.conversation.id, {
-                    role: "assistant",
-                    content: response
-                });
-            }
         } catch (error) {
-            console.error('Error in general query:', error);
-            await context.sendActivity('I encountered an error processing your request.');
+            console.error('Error handling SOP inquiry:', error);
+            await context.sendActivity("I encountered an error while searching for procedures. Please try again.");
         }
     }
 
-    async handleFileQuery(context: TurnContext, history: ChatMessage[]): Promise<void> {
-        const query = context.activity.text;
-        if (!query) return;
+    private extractSearchQuery(message: string): string {
+        return message
+            .toLowerCase()
+            .replace(/do we have (a |an )?sop on/i, '')
+            .replace(/how do i/i, '')
+            .replace(/can (i|we|you)/i, '')
+            .replace(/is there (a |an )?procedure for/i, '')
+            .replace(/what( is|'s) the process for/i, '')
+            .replace(/where can i find/i, '')
+            .trim();
+    }
 
-        const messages: ChatMessage[] = [
-            {
-                role: "system",
-                content: "You are an AI assistant analyzing a file. Provide specific answers based on the file content."
-            },
-            ...history,
-            {
-                role: "user",
-                content: query
-            }
+    private async requestClarification(context: TurnContext): Promise<void> {
+        const clarificationQuestions = [
+            "Could you please specify what kind of procedure or process you're looking for?",
+            "What specific task or process do you need information about?",
+            "Could you provide more details about what you're trying to accomplish?"
         ];
 
-        try {
-            const response = await this.openAIService.getChatCompletion(messages);
-            await context.sendActivity(response);
-        } catch (error) {
-            console.error('Error in file query:', error);
-            await context.sendActivity('I encountered an error analyzing the file.');
-        }
+        const randomQuestion = clarificationQuestions[Math.floor(Math.random() * clarificationQuestions.length)];
+        await context.sendActivity(randomQuestion);
+    }
+
+    private formatSearchResults(results: SearchResultDocument[]): string {
+        let response = "Here's what I found:\n\n";
+        
+        results.forEach((result, index) => {
+            const doc = result.document;
+            response += `${index + 1}. ${doc.title || 'Document'}\n`;
+            if (doc.category) response += `Category: ${doc.category}\n`;
+            if (doc.content) {
+                const excerpt = doc.content.substring(0, 150) + '...';
+                response += `Summary: ${excerpt}\n`;
+            }
+            response += '\n';
+        });
+
+        response += "\nWould you like more specific information about any of these procedures?";
+        return response;
+    }
+
+    private async handleGeneralQuery(context: TurnContext, history: ChatMessage[]): Promise<void> {
+        const response = await this.openAIService.getChatCompletion(history);
+        await context.sendActivity(response);
     }
 }

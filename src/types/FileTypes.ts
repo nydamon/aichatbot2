@@ -1,5 +1,7 @@
 // src/types/FileTypes.ts
 
+import { ChatMessage } from "./ChatTypes";
+
 export interface DocumentMetadata {
     fileName: string;
     fileType: string;
@@ -23,14 +25,10 @@ export interface FileAnalysisResult {
 }
 
 export interface ConversationState {
-    documents: {
-        [key: string]: {
-            content: string;
-            metadata: DocumentMetadata;
-        }
-    };
+    documents: Record<string, { content: string; metadata: any }>;
     documentContext: boolean;
-    lastQuestionTimestamp?: number;
-    contextExpiryTime?: number;
-    processedFiles?: FileUploadResult[];
+    lastQuestionTimestamp: number | undefined;
+    contextExpiryTime: number | undefined;
+    processedFiles: any[];
+    messageHistory: ChatMessage[];
 }
