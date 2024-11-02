@@ -1,77 +1,72 @@
 import { 
     TeamsActivityHandler, 
-    TurnContext 
+    TurnContext, 
+    MessageFactory 
 } from "botbuilder";
 import { OpenAIService } from "./services/OpenAIService";
-import { SearchService } from "./services/SearchService";
 import { StorageService } from "./services/StorageService";
-import { FileHandler } from "./handlers/FileHandler";
-import { DocumentMetadata, FileUploadResult } from "./interfaces/IFileHandler";
-
-interface ConversationState {
-    lastDocumentId?: string;
-    lastDocumentContent?: string;
-    documentMetadata?: DocumentMetadata;
-    documentContext?: boolean;
-    lastQuestionTimestamp?: number;
-    contextExpiryTime?: number;
-}
-
-interface ChatMessage {
-    role: "system" | "user" | "assistant";
-    content: string;
-}
+import { FileHandler } from "./handlers/FileHandler"; 
+import { ConversationState, FileUploadResult } from "./types/FileTypes"; 
+import { ChatMessage } from "./types/ChatTypes";
 
 export class TeamsBot extends TeamsActivityHandler {
     private conversationStates: Map<string, ConversationState>;
-    private readonly CONTEXT_TIMEOUT: number;
-    private readonly RELEVANT_KEYWORDS: string[];
+    private readonly CONTEXT_TIMEOUT: number = 30 * 60 * 1000; // 30 minutes
     private fileHandler: FileHandler;
     private openAIService: OpenAIService;
 
     constructor(
         openAIService: OpenAIService,
-        searchService: SearchService,
         storageService: StorageService
     ) {
         super();
         this.openAIService = openAIService;
-        this.fileHandler = new FileHandler(openAIService, storageService, searchService);
+        this.fileHandler = new FileHandler(); // Ensuring FileHandler is working correctly by decoupling behavior
         this.conversationStates = new Map<string, ConversationState>();
-        this.CONTEXT_TIMEOUT = 30 * 60 * 1000; // 30 minutes
-        this.RELEVANT_KEYWORDS = ["document", "file", "pdf", "content", "it", "this"];
 
-        // Handle members added to the conversation
+        // Welcome message when members get added
         this.onMembersAdded(async (context, next) => {
             const membersAdded = context.activity.membersAdded || [];
-            const welcomeText = `Hello! I'm your AI assistant. I can help you with:
-            • Analyzing documents you upload
-            • Answering questions about uploaded documents
-            • General questions and assistance
-            
-Just upload a document or ask me a question to get started!`;
-
             for (const member of membersAdded) {
                 if (member.id !== context.activity.recipient.id) {
-                    await context.sendActivity(welcomeText);
+                    const welcomeMessage = MessageFactory.text(
+                        "Welcome to the Document Analysis Bot! 👋\n\n" +
+                        "Upload documents and ask questions about them, or feel free to ask general queries!"
+                    );
+                    await context.sendActivity(welcomeMessage);
                 }
             }
             await next();
         });
 
-        // Handle messages
+        // Handling user messages
         this.onMessage(async (context, next) => {
             await this.handleMessage(context);
             await next();
         });
     }
 
+    // Get or create conversation state
+    private getOrCreateConversationState(conversationId: string): ConversationState {
+        let state = this.conversationStates.get(conversationId);
+        if (!state) {
+            state = {
+                documents: {}, 
+                documentContext: false
+            };
+            this.conversationStates.set(conversationId, state);
+        }
+        return state;
+    }
+
+    // Handle incoming user messages
     private async handleMessage(context: TurnContext): Promise<void> {
         const conversationId = context.activity.conversation.id;
         let state = this.getOrCreateConversationState(conversationId);
 
         try {
-            if ((context.activity.attachments ?? []).length > 0) {
+            // If a document (file) is uploaded
+            if (context.activity.attachments?.length) {
                 await this.processFileUpload(context, state);
                 return;
             }
@@ -79,179 +74,87 @@ Just upload a document or ask me a question to get started!`;
             const userMessage = context.activity.text;
             if (!userMessage) return;
 
-            if (this.checkContextExpired(state)) {
-                state.documentContext = false;
-                state.lastDocumentContent = undefined;
-            }
-
-            if (state.documentContext && state.lastDocumentContent) {
-                await this.processMessageWithContext(userMessage, state, context);
+            // Handle document-related context questions
+            if (state.documentContext && state.documents) {
+                await this.handleDocumentQuestion(userMessage, context, state);
             } else {
+                // If no document context, handle general queries
                 await this.handleGeneralQuery(userMessage, context);
             }
-
         } catch (error) {
-            console.error('Error in message handling:', error);
-            await context.sendActivity('I encountered an error processing your request.');
-        } finally {
-            this.setConversationState(conversationId, state);
-            this.performContextCleanup();
+            console.error("Error in handling user message:", error);
+            await context.sendActivity("Sorry, something went wrong while processing your message.");
         }
     }
 
-    private getOrCreateConversationState(conversationId: string): ConversationState {
-        let state = this.conversationStates.get(conversationId);
-        if (!state) {
-            state = {
-                contextExpiryTime: Date.now() + this.CONTEXT_TIMEOUT
-            };
-            this.conversationStates.set(conversationId, state);
-        }
-        return state;
-    }
-
+    // Process file attachments (document uploads)
     private async processFileUpload(context: TurnContext, state: ConversationState): Promise<void> {
         try {
-            const result = await this.fileHandler.handleFileUpload(context);
-            if (result && 'documentId' in result) {
-                const fileResult = result as FileUploadResult;
-                state.lastDocumentId = fileResult.documentId;
-                state.lastDocumentContent = fileResult.content;
+            const results = await this.fileHandler.handleFileUpload(context);
+            if (results?.length) {
+                results.forEach((fileResult: FileUploadResult) => {
+                    state.documents[fileResult.documentId] = {
+                        content: fileResult.content || "",
+                        metadata: fileResult.metadata
+                    };
+                });
                 state.documentContext = true;
-                state.documentMetadata = fileResult.metadata;
                 state.lastQuestionTimestamp = Date.now();
                 state.contextExpiryTime = Date.now() + this.CONTEXT_TIMEOUT;
-                
-                await context.sendActivity('Document processed successfully. You can now ask questions about its content.');
+
+                await context.sendActivity(`Processed ${results.length} file(s). You can now ask questions about their content.`);
+            } else {
+                await context.sendActivity("No files could be processed.");
             }
         } catch (error) {
-            console.error('Error handling file upload:', error);
-            await context.sendActivity('There was an error processing your file.');
+            console.error("Error processing file upload:", error);
+            await context.sendActivity("Sorry, there was an issue processing the uploaded file.");
         }
     }
 
-    private async processMessageWithContext(
+    // Handle document-related questions
+    private async handleDocumentQuestion(
         userMessage: string, 
-        state: ConversationState, 
-        context: TurnContext
+        context: TurnContext, 
+        state: ConversationState
     ): Promise<void> {
-        if (!state.lastDocumentContent) return;
+        // Gather context from uploaded documents
+        if (!state.documents || Object.keys(state.documents).length === 0) {
+            await context.sendActivity("No documents are currently loaded for reference.");
+            return;
+        }
 
-        const isDocumentQuestion = await this.isDocumentRelatedQuestion(
-            userMessage,
-            state.lastDocumentContent,
-            state.documentMetadata
-        );
+        const documentsContext = Object.entries(state.documents)
+            .map(([id, doc]) => `File: ${doc.metadata.fileName}\n${doc.content}`)
+            .join("\n---\n");
 
-        if (isDocumentQuestion) {
-            const response = await this.handleDocumentQuery(
-                userMessage,
-                state.lastDocumentContent,
-                state.documentMetadata
-            );
+        const messages: ChatMessage[] = [
+            { role: "system", content: "You are an AI assistant analyzing documents." },
+            { role: "user", content: `Documents:\n${documentsContext}\n\nUser Question: ${userMessage}` }
+        ];
+
+        try {
+            const response = await this.openAIService.getChatCompletion(messages);
             await context.sendActivity(response);
-        } else {
-            await this.handleGeneralQuery(userMessage, context);
-        }
-        
-        state.lastQuestionTimestamp = Date.now();
-    }
-
-    private async isDocumentRelatedQuestion(
-        question: string,
-        documentContent: string,
-        metadata?: DocumentMetadata
-    ): Promise<boolean> {
-        const hasKeywords = this.RELEVANT_KEYWORDS.some(keyword => 
-            question.toLowerCase().includes(keyword.toLowerCase())
-        );
-
-        if (hasKeywords) return true;
-
-        const messages = this.getTextClassificationPrompt(documentContent, question, metadata);
-        const response = await this.openAIService.getChatCompletion(messages);
-        return response.toLowerCase().includes('true');
-    }
-
-    private async handleDocumentQuery(
-        question: string,
-        documentContent: string,
-        metadata?: DocumentMetadata
-    ): Promise<string> {
-        const messages = this.getDocumentQueryPrompt(documentContent, question, metadata);
-        return await this.openAIService.getChatCompletion(messages);
-    }
-
-    private async handleGeneralQuery(question: string, context: TurnContext): Promise<void> {
-        const messages: ChatMessage[] = [{
-            role: "system",
-            content: "You are a helpful AI assistant answering general questions."
-        }, {
-            role: "user",
-            content: question
-        }];
-
-        const response = await this.openAIService.getChatCompletion(messages);
-        await context.sendActivity(response);
-    }
-
-    private checkContextExpired(state: ConversationState): boolean {
-        if (!state.lastQuestionTimestamp || !state.contextExpiryTime) {
-            return true;
-        }
-        return Date.now() > state.contextExpiryTime;
-    }
-
-    private setConversationState(conversationId: string, state: ConversationState): void {
-        this.conversationStates.set(conversationId, state);
-    }
-
-    private performContextCleanup(): void {
-        for (const [conversationId, state] of this.conversationStates.entries()) {
-            if (this.checkContextExpired(state)) {
-                this.conversationStates.delete(conversationId);
-            }
+        } catch (error) {
+            console.error("Error with document-related chat completion:", error);
+            await context.sendActivity("Sorry, there was an error answering your question.");
         }
     }
 
-    private getTextClassificationPrompt(
-        documentContent: string,
-        question: string,
-        metadata?: DocumentMetadata
-    ): ChatMessage[] {
-        return [
-            {
-                role: "system",
-                content: "Determine if the user's question is about the provided document content. Consider context and implicit references. Respond with 'true' or 'false' only."
-            },
-            {
-                role: "user",
-                content: `Document content: ${documentContent.substring(0, 1000)}...
-                         ${metadata ? `\nDocument metadata: ${JSON.stringify(metadata)}` : ''}
-                         \nQuestion: ${question}
-                         \nIs this question about the document content?`
-            }
+    // Handle general non-document-related queries
+    private async handleGeneralQuery(userMessage: string, context: TurnContext): Promise<void> {
+        const messages: ChatMessage[] = [
+            { role: "system", content: "You are an AI assistant." },
+            { role: "user", content: userMessage }
         ];
-    }
 
-    private getDocumentQueryPrompt(
-        documentContent: string,
-        question: string,
-        metadata?: DocumentMetadata
-    ): ChatMessage[] {
-        return [
-            {
-                role: "system",
-                content: `You are an AI assistant answering questions about a specific document.
-                         ${metadata ? `Document type: ${metadata.fileType}
-                         Document name: ${metadata.fileName}` : ''}
-                         Use only the provided document content to answer questions.
-                         If you can't find the answer in the document, say so clearly.`
-            },
-            {
-                role: "user",
-                content: `Document content: ${documentContent}\n\nQuestion: ${question}`
-            }
-        ];
+        try {
+            const response = await this.openAIService.getChatCompletion(messages);
+            await context.sendActivity(response);
+        } catch (error) {
+            console.error("Error with general query chat completion:", error);
+            await context.sendActivity("Sorry, there was an error processing your query.");
+        }
     }
 }

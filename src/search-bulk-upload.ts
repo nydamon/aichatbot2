@@ -1,67 +1,89 @@
 import { 
     SearchIndexClient, 
     AzureKeyCredential,
-    SearchClient,
-    SearchOptions
+    SearchClient
 } from '@azure/search-documents';
-import config from './config';
-import * as fs from 'fs';
+import * as dotenv from 'dotenv';
 import * as path from 'path';
+import * as fs from 'fs';
+
+// Debug logging for directory locations
+console.log('Current directory:', process.cwd());
+console.log('__dirname:', __dirname);
+
+// Load environment variables
+const envPath = path.resolve(process.cwd(), 'env', '.env.dev');
+console.log('Attempting to load environment from:', envPath);
+
+try {
+    const result = dotenv.config({ path: envPath });
+    if (result.error) {
+        throw result.error;
+    }
+    console.log('Environment file loaded successfully');
+} catch (error) {
+    console.error('Error loading environment file:', error);
+    throw error;
+}
 
 interface SearchDocument {
     id: string;
     content: string;
-    title: string;
-    category: string;
-    timestamp: string;
+    fileName: string;
     fileType: string;
+    timestamp: string;
+    url: string;
     source: string;
-    [key: string]: unknown;
 }
 
-// File handling configuration
-const fileHandling = {
-    mode: 'archive', // 'archive' or 'delete'
-    archivePath: path.join(__dirname, '../processed_documents'),
-    batchSize: 100
-};
+class SearchService {
+    private client: SearchClient<SearchDocument>;
 
-async function bulkUploadDocuments(documentsPath: string) {
-    console.log('Starting bulk document upload...\n');
-
-    try {
-        const endpoint = config.azureSearch?.endpoint;
-        const apiKey = config.azureSearch?.apiKey;
-        const indexName = config.azureSearch?.indexName;
+    constructor() {
+        const endpoint = process.env.AZURE_SEARCH_ENDPOINT;
+        const apiKey = process.env.AZURE_SEARCH_API_KEY;
+        const indexName = process.env.AZURE_SEARCH_INDEX_NAME;
 
         if (!endpoint || !apiKey || !indexName) {
             throw new Error('Missing required search configuration');
         }
 
-        // Create archive directory if needed
-        if (fileHandling.mode === 'archive' && !fs.existsSync(fileHandling.archivePath)) {
-            fs.mkdirSync(fileHandling.archivePath, { recursive: true });
-        }
-
-        // Initialize clients
-        const indexClient = new SearchIndexClient(
+        this.client = new SearchClient<SearchDocument>(
             endpoint,
-            new AzureKeyCredential(apiKey)
+            indexName,
+            new AzureKeyCredential(apiKey),
+            {
+                apiVersion: '2023-11-01'  // Specify a known good API version
+            }
         );
-        const searchClient = indexClient.getSearchClient<SearchDocument>(indexName);
+    }
 
-        // Process files
+    async uploadDocument(document: SearchDocument): Promise<void> {
+        try {
+            const result = await this.client.uploadDocuments([document]);
+            console.log(`Document uploaded successfully: ${result.results[0].succeeded}`);
+        } catch (error) {
+            console.error('Error uploading document:', error);
+            throw error;
+        }
+    }
+}
+
+async function bulkUploadDocuments(documentsPath: string) {
+    console.log('Starting bulk document upload...\n');
+
+    try {
+        const searchService = new SearchService();
+
+        // Read files
         console.log(`Reading documents from: ${documentsPath}`);
         const files = fs.readdirSync(documentsPath);
+        console.log(`Found ${files.length} files in directory`);
+        
         if (files.length === 0) {
             console.log('No files found in documents directory');
             return;
         }
-
-        const documents: SearchDocument[] = [];
-        let processed = 0;
-        const processedFiles: string[] = [];
-        const failedFiles: string[] = [];
 
         // Process each file
         for (const file of files) {
@@ -70,167 +92,62 @@ async function bulkUploadDocuments(documentsPath: string) {
             
             if (stats.isFile()) {
                 try {
+                    console.log(`\nProcessing file: ${file}`);
                     const content = fs.readFileSync(filePath, 'utf8');
                     const fileExt = path.extname(file).toLowerCase();
-                    const fileBaseName = path.basename(file, fileExt);
-                    
-                    // Create searchable document
-                    const document: SearchDocument = {
-                        id: `doc-${Date.now()}-${processed}`,
+                    const timestamp = Date.now();
+                    const uniqueFileName = `${timestamp}-${file}`;
+
+                    const searchDoc: SearchDocument = {
+                        id: uniqueFileName,
                         content: content,
-                        title: fileBaseName,
-                        category: determineCategoryFromContent(content, fileBaseName),
+                        fileName: file,
+                        fileType: fileExt.replace('.', ''),
                         timestamp: new Date().toISOString(),
-                        fileType: fileExt.replace('.', '') || 'txt',
+                        url: '', // Leave empty for bulk upload
                         source: 'bulk-upload'
                     };
 
-                    documents.push(document);
-                    processedFiles.push(filePath);
-                    processed++;
+                    await searchService.uploadDocument(searchDoc);
+                    console.log(`Successfully processed: ${file}`);
 
-                    // Upload in batches
-                    if (documents.length >= fileHandling.batchSize) {
-                        await uploadBatch(searchClient, documents);
-                        await handleProcessedFiles(processedFiles);
-                        console.log(`Uploaded and processed batch of ${documents.length} documents`);
-                        documents.length = 0;
-                        processedFiles.length = 0;
-                    }
                 } catch (error) {
                     console.error(`Error processing file ${file}:`, error);
-                    failedFiles.push(file);
                 }
             }
         }
 
-        // Upload any remaining documents
-        if (documents.length > 0) {
-            await uploadBatch(searchClient, documents);
-            await handleProcessedFiles(processedFiles);
-            console.log(`Uploaded final batch of ${documents.length} documents`);
-        }
-
-        // Verify upload
-        console.log('\nVerifying upload...');
-        const searchOptions: SearchOptions<SearchDocument> = {
-            top: 5,
-            select: ['id', 'title', 'category', 'timestamp', 'fileType'],
-            orderBy: ['timestamp desc']
-        };
-
-        const searchResults = await searchClient.search('*', searchOptions);
-
-        console.log('\nRecently uploaded documents:');
-        let resultCount = 0;
-        for await (const result of searchResults.results) {
-            resultCount++;
-            console.log('\nDocument', resultCount);
-            console.log(JSON.stringify(result.document, null, 2));
-        }
-
-        // Test specific document search
-        console.log('\nTesting content search...');
-        const contentSearchResults = await searchClient.search('API', {
-            select: ['title', 'content'],
-            top: 1
-        });
-
-        console.log('\nSample content search for "API":');
-        for await (const result of contentSearchResults.results) {
-            console.log(JSON.stringify(result.document, null, 2));
-        }
-
-        // Get index statistics
-        const countResults = await searchClient.search('*', {
-            top: 0,
-            includeTotalCount: true
-        });
-
-        // Final report
-        console.log('\nUpload Summary:');
-        console.log('----------------');
-        console.log(`Total files processed: ${processed}`);
-        console.log(`Successfully uploaded: ${processed - failedFiles.length}`);
-        console.log(`Failed files: ${failedFiles.length}`);
-        console.log(`Total documents in index: ${countResults.count || 'Unknown'}`);
-        
-        if (failedFiles.length > 0) {
-            console.log('\nFailed files:');
-            failedFiles.forEach(file => console.log(`- ${file}`));
-        }
-
     } catch (error) {
         console.error('Error in bulk upload:', error);
-        if (error instanceof Error) {
-            console.error('Error details:', {
-                message: error.message,
-                stack: error.stack
-            });
-        }
-        throw error; // Re-throw to indicate failure to calling code
-    }
-}
-
-async function uploadBatch(searchClient: SearchClient<SearchDocument>, documents: SearchDocument[]) {
-    try {
-        const result = await searchClient.uploadDocuments(documents);
-        console.log(`Batch upload results: ${result.results.length} documents processed`);
-        
-        const failures = result.results.filter(r => !r.succeeded);
-        if (failures.length > 0) {
-            console.error('Failed uploads:', failures);
-        }
-        return failures.length === 0;
-    } catch (error) {
-        console.error('Error uploading batch:', error);
         throw error;
     }
 }
 
-async function handleProcessedFiles(filePaths: string[]): Promise<void> {
-    for (const filePath of filePaths) {
-        try {
-            if (fileHandling.mode === 'archive') {
-                const fileName = path.basename(filePath);
-                const archivePath = path.join(fileHandling.archivePath, fileName);
-                fs.renameSync(filePath, archivePath);
-                console.log(`Archived: ${fileName}`);
-            } else if (fileHandling.mode === 'delete') {
-                fs.unlinkSync(filePath);
-                console.log(`Deleted: ${path.basename(filePath)}`);
-            }
-        } catch (error) {
-            console.error(`Error handling processed file ${filePath}:`, error);
-        }
-    }
-}
-
-function determineCategoryFromContent(content: string, fileName: string): string {
-    // Simple category determination logic
-    const lowerContent = content.toLowerCase();
-    const lowerFileName = fileName.toLowerCase();
-
-    if (lowerFileName.includes('api') || lowerContent.includes('api')) {
-        return 'API Documentation';
-    } else if (lowerFileName.includes('guide') || lowerContent.includes('guide')) {
-        return 'User Guide';
-    } else if (lowerFileName.includes('release') || lowerContent.includes('release notes')) {
-        return 'Release Notes';
-    } else if (lowerFileName.includes('troubleshoot') || lowerContent.includes('troubleshoot')) {
-        return 'Troubleshooting';
-    }
-    
-    return 'General Documentation';
-}
-
 // Example usage
 if (require.main === module) {
-    const documentsPath = process.argv[2] || path.join(__dirname, '../documents');
-    if (!fs.existsSync(documentsPath)) {
-        console.error(`Documents directory not found: ${documentsPath}`);
+    const possiblePaths = [
+        path.join(process.cwd(), 'documents'),
+        path.join(process.cwd(), 'AI Chat Bot', 'documents'),
+        path.join(__dirname, '../../documents'),
+        path.join(__dirname, '../documents'),
+        '/Users/damondecrescenzo/TeamsApps/AI Chat Bot/documents'
+    ];
+
+    let documentsPath = '';
+    for (const testPath of possiblePaths) {
+        console.log('Checking path:', testPath);
+        if (fs.existsSync(testPath)) {
+            documentsPath = testPath;
+            console.log('Found documents directory at:', documentsPath);
+            break;
+        }
+    }
+
+    if (!documentsPath) {
+        console.error('Documents directory not found in any of these locations:', possiblePaths);
         process.exit(1);
     }
+
     bulkUploadDocuments(documentsPath).catch(error => {
         console.error('Fatal error in bulk upload:', error);
         process.exit(1);

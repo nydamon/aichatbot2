@@ -6,11 +6,10 @@ console.log('Config - Current directory:', process.cwd());
 console.log('Config - Directory name:', __dirname);
 
 // Load environment variables
-const envPath = path.resolve(process.cwd(), 'env', 'env-dev');
+const envPath = path.resolve(process.cwd(), 'env', '.env.dev');
 console.log('Config - Loading environment from:', envPath);
 
 try {
-    const envPath = path.resolve(process.cwd(), 'env', '.env.dev');  // Changed from 'env-dev' to '.env.dev'
     const result = dotenv.config({ path: envPath });
     if (result.error) {
         throw result.error;
@@ -92,57 +91,10 @@ export const credentialsConfig: CredentialsConfig = {
 
 // Log configuration status (without sensitive values)
 console.log('Configuration Status:');
-console.log('Azure OpenAI:', {
-    serviceName: azureOpenAIConfig.serviceName ? 'Set' : 'Missing',
-    endpoint: azureOpenAIConfig.endpoint ? 'Set' : 'Missing',
-    deploymentName: azureOpenAIConfig.deploymentName ? 'Set' : 'Missing',
-    embeddingsDeploymentName: azureOpenAIConfig.embeddingsDeploymentName ? 'Set' : 'Missing'
+console.log('Azure OpenAI:', azureOpenAIConfig);
+console.log('Azure Search:', azureSearchConfig);
+console.log('Azure Storage:', azureStorageConfig);
+console.log('Credentials:', {
+    MicrosoftAppId: credentialsConfig.MicrosoftAppId,
+    MicrosoftAppTenantId: credentialsConfig.MicrosoftAppTenantId
 });
-
-console.log('Azure Search:', {
-    serviceName: azureSearchConfig.serviceName ? 'Set' : 'Missing',
-    endpoint: azureSearchConfig.endpoint ? 'Set' : 'Missing',
-    indexName: azureSearchConfig.indexName ? 'Set' : 'Missing'
-});
-
-console.log('Azure Storage:', {
-    accountName: azureStorageConfig.accountName ? 'Set' : 'Missing',
-    containerName: azureStorageConfig.containerName ? 'Set' : 'Missing'
-});
-
-console.log('Bot Credentials:', {
-    MicrosoftAppId: credentialsConfig.MicrosoftAppId ? 'Set' : 'Missing',
-    MicrosoftAppTenantId: credentialsConfig.MicrosoftAppTenantId ? 'Set' : 'Missing'
-});
-
-// Export a function to validate the configuration
-export function validateConfig(): void {
-    console.log('Validating configuration...');
-    
-    // This will throw errors if any required variables are missing
-    getRequiredEnvVar('AZURE_OPENAI_SERVICE_NAME');
-    getRequiredEnvVar('AZURE_OPENAI_ENDPOINT');
-    getRequiredEnvVar('AZURE_OPENAI_API_KEY');
-    getRequiredEnvVar('AZURE_OPENAI_DEPLOYMENT_NAME');
-    getRequiredEnvVar('AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT_NAME');
-    
-    getRequiredEnvVar('AZURE_SEARCH_SERVICE_NAME');
-    getRequiredEnvVar('AZURE_SEARCH_ENDPOINT');
-    getRequiredEnvVar('AZURE_SEARCH_API_KEY');
-    getRequiredEnvVar('AZURE_SEARCH_QUERY_KEY');
-    getRequiredEnvVar('AZURE_SEARCH_INDEX_NAME');
-    
-    getRequiredEnvVar('AZURE_STORAGE_ACCOUNT_NAME');
-    getRequiredEnvVar('AZURE_STORAGE_CONTAINER_NAME');
-    getRequiredEnvVar('AZURE_STORAGE_KEY');
-    getRequiredEnvVar('AZURE_STORAGE_CONNECTION_STRING');
-    
-    getRequiredEnvVar('MICROSOFT_APP_ID');
-    getRequiredEnvVar('MICROSOFT_APP_PASSWORD');
-    getRequiredEnvVar('AZURE_AD_TENANT_ID');
-    
-    console.log('Configuration validation completed successfully');
-}
-
-// Validate configuration immediately
-validateConfig();

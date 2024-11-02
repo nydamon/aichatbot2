@@ -1,4 +1,4 @@
-import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
+import { OpenAIClient, AzureKeyCredential, ChatRequestMessage } from '@azure/openai';
 import { ChatMessage, ChatCompletionOptions } from '../types/ChatTypes';
 import { azureOpenAIConfig } from '../config/azure-config';
 
@@ -16,7 +16,6 @@ export class OpenAIService {
                 new AzureKeyCredential(azureOpenAIConfig.apiKey)
             );
 
-            // Log successful initialization
             console.log('OpenAIService initialized successfully');
         } catch (error) {
             console.error('Error initializing OpenAIService:', error);
@@ -29,19 +28,36 @@ export class OpenAIService {
         options: ChatCompletionOptions = {}
     ): Promise<string> {
         try {
+            // Convert messages to the correct format
+            const formattedMessages: ChatRequestMessage[] = messages.map(msg => ({
+                role: msg.role,
+                content: msg.content
+            }));
+
+            console.log('Sending request to OpenAI with deployment:', azureOpenAIConfig.deploymentName);
+            console.log('Messages:', JSON.stringify(formattedMessages, null, 2));
+
             const completion = await this.client.getChatCompletions(
                 azureOpenAIConfig.deploymentName,
-                messages,
+                formattedMessages,
                 {
                     temperature: options.temperature ?? 0.7,
                     maxTokens: options.maxTokens ?? 800
                 }
             );
 
-            return completion.choices[0]?.message?.content || '';
+            if (!completion.choices[0]?.message?.content) {
+                throw new Error('No completion content received');
+            }
+
+            return completion.choices[0].message.content;
         } catch (error) {
-            console.error('Error in OpenAI completion:', error);
-            throw new Error('Failed to get chat completion');
+            console.error('OpenAI completion error:', error);
+            if (error instanceof Error) {
+                throw new Error(`Failed to fetch completion: ${error.message}`);
+            } else {
+                throw new Error('Failed to fetch completion: Unknown error');
+            }
         }
     }
 }
