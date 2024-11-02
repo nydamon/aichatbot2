@@ -26,7 +26,7 @@ export class MessageHandler {
         const messageText = context.activity.text || '';
         
         if (this.isSopInquiry(messageText)) {
-            await this.handleSopInquiry(context, messageText);
+            await this.handleSopInquiry(messageText, context);
         } else {
             await this.handleGeneralQuery(context, history);
         }
@@ -36,33 +36,22 @@ export class MessageHandler {
         return this.SOP_PATTERNS.some(pattern => pattern.test(message));
     }
 
-    private async handleSopInquiry(context: TurnContext, message: string): Promise<void> {
+    async handleSopInquiry(query: string, context: TurnContext): Promise<void> {
         try {
-            const query = this.extractSearchQuery(message);
-
-            if (!query) {
-                await this.requestClarification(context);
+            console.log('Searching documents with query:', query);
+            const searchResults = await this.searchService.searchDocuments(query);
+            
+            if (!searchResults || searchResults.length === 0) {
+                await context.sendActivity("I couldn't find any relevant documents for your query.");
                 return;
             }
 
-            const searchResults = await this.searchService.searchDocuments(query, {
-                top: 3
-            });
-
-            if (!searchResults.results || searchResults.results.length === 0) {
-                await context.sendActivity(
-                    "I couldn't find any specific SOPs or procedures for that. " +
-                    "Could you please rephrase your question or provide more details?"
-                );
-                return;
-            }
-
-            const response = this.formatSearchResults(searchResults.results);
+            const response = this.formatSearchResults(searchResults);
             await context.sendActivity(response);
-
+            
         } catch (error) {
             console.error('Error handling SOP inquiry:', error);
-            await context.sendActivity("I encountered an error while searching for procedures. Please try again.");
+            throw error;
         }
     }
 
@@ -89,22 +78,11 @@ export class MessageHandler {
         await context.sendActivity(randomQuestion);
     }
 
-    private formatSearchResults(results: SearchResultDocument[]): string {
-        let response = "Here's what I found:\n\n";
-        
-        results.forEach((result, index) => {
-            const doc = result.document;
-            response += `${index + 1}. ${doc.title || 'Document'}\n`;
-            if (doc.category) response += `Category: ${doc.category}\n`;
-            if (doc.content) {
-                const excerpt = doc.content.substring(0, 150) + '...';
-                response += `Summary: ${excerpt}\n`;
-            }
-            response += '\n';
-        });
-
-        response += "\nWould you like more specific information about any of these procedures?";
-        return response;
+    private formatSearchResults(documents: SearchResultDocument[]): string {
+        return documents.map(doc => {
+            const preview = doc.document.content?.substring(0, 200) ?? 'No content available';
+            return `📄 **Document**: ${doc.document.title ?? 'Untitled'}\n${preview}...\n\n`;
+        }).join('---\n');
     }
 
     private async handleGeneralQuery(context: TurnContext, history: ChatMessage[]): Promise<void> {
