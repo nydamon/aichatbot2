@@ -225,6 +225,38 @@
             "label": "npm: start",
             "detail": "ts-node src/index.ts",
             "isBackground": true
+        },
+        {
+            "label": "Run Dev Server",
+            "type": "shell",
+            "command": "npm run dev",
+            "isBackground": true,
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": {
+                "pattern": [
+                    {
+                        "regexp": "^.*$",
+                        "file": 0,
+                        "location": 1,
+                        "message": 2
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "[nodemon] starting",
+                    "endsPattern": "ready for connections|[nodemon] app crashed"
+                }
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
