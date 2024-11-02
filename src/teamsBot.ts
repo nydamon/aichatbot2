@@ -21,7 +21,7 @@ export class TeamsBot extends TeamsActivityHandler {
     ) {
         super();
         this.openAIService = openAIService;
-        this.fileHandler = new FileHandler(); // Ensuring FileHandler is working correctly by decoupling behavior
+        this.fileHandler = new FileHandler(storageService);
         this.conversationStates = new Map<string, ConversationState>();
 
         // Welcome message when members get added
