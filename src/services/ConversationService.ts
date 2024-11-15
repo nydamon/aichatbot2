@@ -1,4 +1,4 @@
-import { ChatMessage } from '../types/ChatTypes';
+import { ChatMessage, isMessageContentArray } from '../types/ChatTypes';
 import { IConversationManager } from '../interfaces/IConversationManager';
 
 export class ConversationService implements IConversationManager {
@@ -30,9 +30,14 @@ export class ConversationService implements IConversationManager {
 
     hasRecentFileUpload(conversationId: string): boolean {
         const history = this.getHistory(conversationId);
-        return history.some(msg => 
-            msg.role === "system" && 
-            msg.content.includes("User uploaded file")
-        );
+        return history.some(msg => {
+            if (msg.role === "system") {
+                const content = isMessageContentArray(msg.content) 
+                    ? msg.content.find(c => c.type === 'text')?.text || ''
+                    : msg.content;
+                return content.includes("User uploaded file");
+            }
+            return false;
+        });
     }
 }

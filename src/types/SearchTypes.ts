@@ -1,46 +1,45 @@
-export interface SearchDocument {
+export interface BaseDocument {
     id: string;
-    title?: string; // Add the title property
+    title: string;
     content: string;
-    url?: string; // Add the url property
-    metadata?: {
-        fileName?: string;
-        contentType?: string;
-        size?: number;
-    };
-    timestamp: string;
+    url?: string;
+    fileName?: string;
     fileType?: string;
+    size?: number;
+    uploadTime?: string;
     source?: string;
-    uploadedBy?: string;
-    [key: string]: unknown;
+    timestamp?: string;
+    embedding?: number[];
+    summary?: string;
+    keyPhrases?: string[];
+    '@search.score'?: number;
+    '@search.rerankerScore'?: number;
 }
 
-export type SearchDocumentInput = Partial<SearchDocument>;
-
-export interface SearchOptions {
-    filter?: string;
-    select?: string[];
-    top?: number;
-    orderBy?: string[];
+export interface IndexDocument extends BaseDocument {
+    content: string;
 }
 
-export interface SearchResult {
-    document: SearchDocument;
-    score?: number;
+export interface SearchDocument extends BaseDocument {
+    content: string;
 }
 
 export interface SearchResultDocument {
-    title?: string;
-    category?: string;
-    content?: string;
-    document: {
-        id: string;
-        title?: string;
-        category?: string;
-        content?: string;
-        };
-    }
+    document: SearchDocument;
+    score: number;
+}
 
-export interface SearchResponse {
-    results: SearchResult[];
+export interface SearchError extends Error {
+    statusCode?: number;
+    details?: string;
+}
+
+export type SearchFields = keyof BaseDocument;
+
+export interface SimpleSearchOptions {
+    top?: number;
+    skip?: number;
+    select?: SearchFields[];
+    orderBy?: string[];
+    filter?: string;
 }

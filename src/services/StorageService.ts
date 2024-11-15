@@ -1,8 +1,9 @@
-import { BlobServiceClient, StorageSharedKeyCredential } from '@azure/storage-blob';
+import { BlobServiceClient, StorageSharedKeyCredential, generateBlobSASQueryParameters, BlobSASPermissions, SASProtocol } from '@azure/storage-blob';
 import { azureStorageConfig } from '../config/azure-config';
 
 export class StorageService {
     private client: BlobServiceClient;
+    private sharedKeyCredential: StorageSharedKeyCredential;
 
     constructor() {
         try {
@@ -10,14 +11,14 @@ export class StorageService {
                 throw new Error('Azure Storage configuration missing');
             }
 
-            const sharedKeyCredential = new StorageSharedKeyCredential(
+            this.sharedKeyCredential = new StorageSharedKeyCredential(
                 azureStorageConfig.accountName,
-                azureStorageConfig.key  // Using 'key' instead of 'accountKey'
+                azureStorageConfig.key
             );
 
             this.client = new BlobServiceClient(
                 `https://${azureStorageConfig.accountName}.blob.core.windows.net`,
-                sharedKeyCredential
+                this.sharedKeyCredential
             );
 
             console.log('StorageService initialized successfully');
@@ -35,7 +36,9 @@ export class StorageService {
             const blob = container.getBlockBlobClient(fileName);
             await blob.upload(content, content.length);
 
-            return blob.url;
+            // Generate SAS URL that expires in 5 minutes
+            const sasUrl = await this.generateSasUrl(containerName, fileName);
+            return sasUrl;
         } catch (error) {
             console.error('Error uploading file:', error);
             throw new Error('Failed to upload file');
@@ -92,9 +95,7 @@ export class StorageService {
 
     async getFileUrl(containerName: string, fileName: string): Promise<string> {
         try {
-            const container = this.client.getContainerClient(containerName);
-            const blob = container.getBlockBlobClient(fileName);
-            return blob.url;
+            return await this.generateSasUrl(containerName, fileName);
         } catch (error) {
             console.error('Error getting file URL:', error);
             throw new Error('Failed to get file URL');
@@ -110,5 +111,30 @@ export class StorageService {
             console.error('Error checking file existence:', error);
             throw new Error('Failed to check file existence');
         }
+    }
+
+    private async generateSasUrl(containerName: string, fileName: string): Promise<string> {
+        const container = this.client.getContainerClient(containerName);
+        const blob = container.getBlockBlobClient(fileName);
+
+        const startsOn = new Date();
+        const expiresOn = new Date(startsOn);
+        expiresOn.setMinutes(startsOn.getMinutes() + 5); // URL expires in 5 minutes
+
+        const sasOptions = {
+            containerName,
+            blobName: fileName,
+            permissions: BlobSASPermissions.parse("r"), // Read-only permission
+            startsOn,
+            expiresOn,
+            protocol: SASProtocol.Https
+        };
+
+        const sasToken = generateBlobSASQueryParameters(
+            sasOptions,
+            this.sharedKeyCredential
+        ).toString();
+
+        return `${blob.url}?${sasToken}`;
     }
 }

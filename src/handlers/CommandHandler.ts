@@ -10,6 +10,8 @@ export class CommandHandler {
         FILES: '/files',
         SETTINGS: '/settings',
         STATUS: '/status',
+        SOP: '/sop',
+        CONFLUENCE: '/confluence'
     };
 
     private conversationService: ConversationService;
@@ -25,6 +27,23 @@ export class CommandHandler {
 
     async handleCommand(context: TurnContext, command: string): Promise<void> {
         try {
+            // Check if it's a SOP or Confluence search command
+            if (command.toLowerCase().startsWith(this.COMMANDS.SOP) || 
+                command.toLowerCase().startsWith(this.COMMANDS.CONFLUENCE)) {
+                const commandType = command.toLowerCase().startsWith(this.COMMANDS.SOP) ? 
+                    this.COMMANDS.SOP : this.COMMANDS.CONFLUENCE;
+                const searchQuery = command.slice(commandType.length).trim();
+
+                if (!searchQuery) {
+                    const helpMessage = `Please provide a search term after the ${commandType} command.\n\nExample: ${commandType} create user\n\nThis will search our documentation for relevant information.`;
+                    await context.sendActivity(helpMessage);
+                    return;
+                }
+
+                await this.handleDocumentSearchCommand(context, commandType, searchQuery);
+                return;
+            }
+
             const normalizedCommand = command.toLowerCase().trim();
 
             switch (normalizedCommand) {
@@ -48,8 +67,40 @@ export class CommandHandler {
                     break;
             }
         } catch (error) {
-            console.error('Error handling command:', error);
+            console.error('Error handling command: ', error instanceof Error ? error.message : String(error));
             await context.sendActivity('An error occurred while processing your command. Please try again.');
+        }
+    }
+
+    private async handleDocumentSearchCommand(context: TurnContext, commandType: string, searchQuery: string): Promise<void> {
+        try {
+            const searchResults = await this.searchService.searchDocuments(searchQuery, {
+                top: 3,
+                select: ['id', 'content', 'title', 'url']
+            });
+
+            if (searchResults && searchResults.length > 0) {
+                // Combine relevant document content
+                const documentContext = searchResults
+                    .map(result => result.document.content)
+                    .join('\n\n');
+
+                // Format the response with document links
+                let response = `Here are the relevant documents I found for "${searchQuery}":\n\n`;
+                searchResults.forEach(result => {
+                    const doc = result.document;
+                    const title = doc.title || 'Untitled Document';
+                    const url = doc.url || `aHR0cHM6Ly9ncHRz${doc.id}`; // Use base64 encoded ID if no URL
+                    response += `- [${title}](${url})\n`;
+                });
+
+                await context.sendActivity(response);
+            } else {
+                await context.sendActivity(`No documents found matching "${searchQuery}". Try refining your search terms.`);
+            }
+        } catch (error) {
+            console.error('Error searching documents: ', error instanceof Error ? error.message : String(error));
+            await context.sendActivity('An error occurred while searching documents. Please try again.');
         }
     }
 
@@ -62,6 +113,10 @@ Basic Commands:
 - \`/clear\` - Clear conversation history
 - \`/files\` - List recently uploaded files
 
+Document Search:
+- \`/sop <search term>\` - Search SOPs and Confluence docs
+- \`/confluence <search term>\` - Alternative way to search docs
+
 File Management:
 - Upload files for analysis (Supported: PDF, TXT, MD, CSV, JSON)
 - Ask questions about uploaded documents
@@ -72,7 +127,7 @@ Additional Commands:
 - \`/status\` - Check bot and service status
 
 Tips:
-- Use clear, specific questions
+- Use clear, specific search terms with /sop or /confluence
 - Mention file names when asking about documents
 - Type commands exactly as shown
 
@@ -83,7 +138,7 @@ Need more help? Just ask!
         
         // Send suggested actions
         await context.sendActivity(MessageFactory.suggestedActions(
-            ['/files', '/clear', '/status'],
+            ['/sop', '/files', '/clear', '/status'],
             'Quick actions:'
         ));
     }
@@ -99,32 +154,20 @@ Need more help? Just ask!
             
             // Offer next steps
             await context.sendActivity(MessageFactory.suggestedActions(
-                ['Upload a file', 'Ask a question', '/help'],
+                ['Upload a file', '/sop', '/help'],
                 'What would you like to do next?'
             ));
         } catch (error) {
-            console.error('Error clearing conversation history:', error);
+            console.error('Error clearing conversation history: ', error instanceof Error ? error.message : String(error));
             await context.sendActivity('Failed to clear conversation history. Please try again.');
         }
     }
 
     private async handleFilesCommand(context: TurnContext): Promise<void> {
         try {
-            const searchOptions = {
-                filter: "source eq 'user-upload'",
-                select: ['fileName', 'timestamp', 'fileType', 'uploadedBy'] as string[],
-                top: 5,
-                orderBy: ['timestamp desc'] as string[]
-            };
-
-            const searchResults = await this.searchService.searchDocuments('*', searchOptions);
+            const searchResults = await this.searchService.searchDocuments('*');
             
-            let hasResults = false;
-            for await (const _ of searchResults.results) {
-                hasResults = true;
-                break;
-            }
-            if (!hasResults) {
+            if (searchResults.length === 0) {
                 await context.sendActivity('No files have been uploaded yet.');
                 await context.sendActivity(MessageFactory.suggestedActions(
                     ['Upload a file', '/help'],
@@ -135,28 +178,29 @@ Need more help? Just ask!
 
             let fileList = '📁 **Recently Uploaded Files**\n\n';
             
-            for await (const result of searchResults.results) {
-                const doc = result.document as SearchDocument;
-                const timestamp = new Date(doc.timestamp).toLocaleString();
-                const uploadedBy = doc.uploadedBy || 'Unknown';
-                const fileType = doc.fileType?.toUpperCase() || 'Unknown';
+            for (const result of searchResults) {
+                const doc = result.document;
+                const displayName = doc.fileName || doc.title || 'Untitled';
+                const contentType = doc.fileType || 'Unknown';
 
-                fileList += `📄 **${doc.fileName}**\n`;
-                fileList += `   • Type: ${fileType}\n`;
-                fileList += `   • Uploaded: ${timestamp}\n`;
-                fileList += `   • By: ${uploadedBy}\n\n`;
+                fileList += `📄 **${displayName}**\n`;
+                fileList += `   • Type: ${contentType.toUpperCase()}\n`;
+                if (doc.url) {
+                    fileList += `   • URL: ${doc.url}\n`;
+                }
+                fileList += '\n';
             }
 
             await context.sendActivity(MessageFactory.text(fileList));
             
             // Add helpful suggestions
             await context.sendActivity(MessageFactory.suggestedActions(
-                ['Upload new file', 'Search files', '/help'],
+                ['Upload new file', '/sop', '/help'],
                 'What would you like to do with these files?'
             ));
 
         } catch (error) {
-            console.error('Error listing files:', error);
+            console.error('Error listing files: ', error instanceof Error ? error.message : String(error));
             await context.sendActivity('Failed to retrieve file list. Please try again later.');
         }
     }
@@ -205,7 +249,7 @@ Last Updated: ${new Date().toLocaleString()}
             await context.sendActivity(MessageFactory.text(statusMessage));
 
         } catch (error) {
-            console.error('Error checking status:', error);
+            console.error('Error checking status: ', error instanceof Error ? error.message : String(error));
             await context.sendActivity('Failed to retrieve system status.');
         }
     }
@@ -224,7 +268,7 @@ Last Updated: ${new Date().toLocaleString()}
         
         // Show quick actions
         await context.sendActivity(MessageFactory.suggestedActions(
-            ['/help', '/files', '/status'],
+            ['/help', '/sop', '/files'],
             'Try one of these commands:'
         ));
     }

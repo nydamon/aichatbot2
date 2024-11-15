@@ -4,15 +4,20 @@ import {
     ActivityTypes,
     ConversationReference,
     MessageFactory,
-    CardFactory
+    CardFactory,
+    Attachment
 } from 'botbuilder';
 import { OpenAIService } from './services/OpenAIService';
 import { StorageService } from './services/StorageService';
 import { SearchService } from './services/SearchService';
 import { FileHandler } from './handlers/FileHandler';
 import { MessageHandler } from './handlers/MessageHandler';
+import { CommandHandler } from './handlers/CommandHandler';
+import { ImageHandler } from './handlers/ImageHandler';
+import { ConversationService } from './services/ConversationService';
 import { ChatMessage } from './types/ChatTypes';
 import * as winston from 'winston';
+import axios from 'axios';
 
 const logger = winston.createLogger({
     level: 'info',
@@ -42,6 +47,8 @@ export class TeamsBot extends TeamsActivityHandler {
     private openAIService: OpenAIService;
     private fileHandler: FileHandler;
     private messageHandler: MessageHandler;
+    private commandHandler: CommandHandler;
+    private imageHandler: ImageHandler;
     private conversationStates: Map<string, ConversationState>;
     private readonly CONTEXT_TIMEOUT = 30 * 60 * 1000; // 30 minutes
 
@@ -52,8 +59,10 @@ export class TeamsBot extends TeamsActivityHandler {
     ) {
         super();
         this.openAIService = openAIService;
-        this.fileHandler = new FileHandler(storageService);
         this.messageHandler = new MessageHandler(searchService, openAIService);
+        this.fileHandler = new FileHandler(storageService, openAIService, this.messageHandler); // Pass messageHandler here
+        this.commandHandler = new CommandHandler(new ConversationService(), searchService);
+        this.imageHandler = new ImageHandler(storageService, openAIService);
         this.conversationStates = new Map<string, ConversationState>();
 
         this.onMembersAdded(async (context, next) => {
@@ -64,13 +73,14 @@ export class TeamsBot extends TeamsActivityHandler {
                         "Welcome to the Document Analysis Bot! 👋\n\n" +
                         "Here's what I can do:\n" +
                         "📄 Process uploaded documents and answer questions about them\n" +
+                        "🖼️ Analyze images and provide descriptions\n" +
                         "💬 Answer general questions and maintain conversation context\n" +
                         "🔄 Remember our conversation history for more contextual responses\n\n" +
                         "To get started:\n" +
-                        "1. Upload a document to analyze it\n" +
-                        "2. Ask questions about the document\n" +
-                        "3. Or simply chat with me about any topic!\n\n" +
-                        "How can I help you today?"
+                        "1. Upload a document or image to analyze it\n" +
+                        "2. Ask questions about the content\n" +
+                        "3. Or use /sop or /confluence to search our documentation\n\n" +
+                        "Type /help to see all available commands!"
                     );
                     await context.sendActivity(welcomeMessage);
                 }
@@ -88,9 +98,15 @@ export class TeamsBot extends TeamsActivityHandler {
 
             if (context.activity.type === ActivityTypes.Message) {
                 const text = context.activity.text?.trim() || '';
+                const hasAttachments = (context.activity.attachments?.length ?? 0) > 0;
                 
-                if (text.startsWith('aHR0cHM6Ly9ncHRz')) {
+                if (text.startsWith('/')) {
+                    // Handle commands
+                    await this.commandHandler.handleCommand(context, text);
+                } else if (text.startsWith('aHR0cHM6Ly9ncHRz')) {
                     await this.handleDocumentSelection(context, text);
+                } else if (hasAttachments) {
+                    await this.handleAttachments(context);
                 } else {
                     await this.handleMessage(context);
                 }
@@ -98,6 +114,54 @@ export class TeamsBot extends TeamsActivityHandler {
         } catch (error) {
             logger.error('Error in onTurn:', error);
             await context.sendActivity('Sorry, I encountered an error.');
+        }
+    }
+
+    private async handleAttachments(context: TurnContext): Promise<void> {
+        const attachments = context.activity.attachments || [];
+        
+        for (const attachment of attachments) {
+            try {
+                if (this.isImageAttachment(attachment)) {
+                    // Handle image
+                    const imageBuffer = await this.downloadAttachment(attachment);
+                    if (imageBuffer) {
+                        await this.imageHandler.handleImageUpload(context, imageBuffer, attachment.name || 'image.jpg');
+                    }
+                } else {
+                    // Handle other file types
+                    const results = await this.fileHandler.handleFileUpload(context);
+                    
+                    // Update conversation state with file info
+                    const state = this.getConversationState(context.activity.conversation.id);
+                    state.documentContext = true;
+                    state.processedFiles.push(...results.filter(r => r.success).map(r => r.documentId));
+                    this.conversationStates.set(context.activity.conversation.id, state);
+                }
+            } catch (error) {
+                logger.error('Error processing attachment:', error);
+                await context.sendActivity(`Failed to process ${attachment.name}: ${error instanceof Error ? error.message : String(error)}`);
+            }
+        }
+    }
+
+    private isImageAttachment(attachment: Attachment): boolean {
+        const contentType = attachment.contentType.toLowerCase();
+        return contentType.startsWith('image/');
+    }
+
+    private async downloadAttachment(attachment: Attachment): Promise<Buffer | null> {
+        try {
+            if (attachment.contentUrl) {
+                const response = await axios.get(attachment.contentUrl, {
+                    responseType: 'arraybuffer'
+                });
+                return Buffer.from(response.data);
+            }
+            return null;
+        } catch (error) {
+            logger.error('Error downloading attachment:', error);
+            return null;
         }
     }
 
@@ -123,11 +187,6 @@ export class TeamsBot extends TeamsActivityHandler {
             const conversationId = context.activity.conversation.id;
             let state = this.getConversationState(conversationId);
 
-            if ((context.activity.attachments?.length ?? 0) > 0) {
-                await this.fileHandler.handleFileUpload(context);
-                return;
-            }
-
             if (context.activity.type === ActivityTypes.Message) {
                 await this.messageHandler.handleMessage(context);
             }
@@ -141,7 +200,10 @@ export class TeamsBot extends TeamsActivityHandler {
 
     private async handleDocumentSelection(context: TurnContext, documentId: string): Promise<void> {
         try {
-            const document = await this.messageHandler.getDocumentContent(documentId);
+            const conversationId = context.activity.conversation.id;
+            const state = this.getConversationState(conversationId);
+            const document = state.documents[documentId];
+
             if (document) {
                 // Log the raw document content
                 logger.info('Raw Document Content:', document.content);

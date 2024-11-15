@@ -56,7 +56,8 @@ const storageService = new StorageService();
 const searchService = new SearchService(
     azureSearchConfig.endpoint,
     azureSearchConfig.indexName,
-    azureSearchConfig.queryKey
+    azureSearchConfig.queryKey,
+    openAIService
 );
 
 // Initialize TeamsBot with services

@@ -1,76 +1,179 @@
-<<<<<<< HEAD
-# aichatbot
-Used for MS Teams
-=======
-# Overview of the Basic Bot template
+# AI Chat Bot
 
-Examples of Microsoft Teams bots in everyday use include:
+A robust chatbot application leveraging OpenAI's GPT models with enhanced file handling and context management.
 
-- Bots that notify about build failures.
-- Bots that provide information about the weather or bus schedules.
-- Bots that provide travel information.
+## Key Features
 
-A bot interaction can be a quick question and answer, or it can be a complex conversation. Being a cloud application, a bot can provide valuable and secure access to cloud services and corporate resources.
+### Intelligent File Processing
+- **ChatGPT-Powered Analysis**
+  - All file types processed through GPT
+  - Intelligent content interpretation
+  - No manual parsing libraries
+  - Unified handling across formats
 
-## Get started with the Basic Bot template
+### File Processing
+- **Smart Context Management**
+  - Maintains file context during conversations
+  - Enhances questions with file-specific context
+  - Prevents redundant clarification requests
+  - Automatic context cleanup
 
-> **Prerequisites**
->
-> To run the Basic Bot template in your local dev machine, you will need:
->
-> - [Node.js](https://nodejs.org/), supported versions: 16, 18
-> - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
+- **Multi-Format Support**
+  - Excel (.xlsx, .xls)
+  - CSV (multiple delimiters)
+  - PDF text extraction
+  - Image analysis
+  - Proper error handling
 
-> For local debugging using Teams Toolkit CLI, you need to do some extra steps described in [Set up your Teams Toolkit CLI for local debugging](https://aka.ms/teamsfx-cli-debugging).
+- **Data Analysis**
+  - Spreadsheet visualization
+  - Statistical calculations
+  - Chart generation
+  - Trend analysis
 
-1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-2. Press F5 to start debugging which launches your app in Teams App Test Tool using a web browser. Select `Debug in Test Tool`.
-3. The browser will pop up to open Teams App Test Tool.
-4. You will receive a welcome message from the bot, and you can send anything to the bot to get an echoed response.
+### Core Capabilities
+- GPT-4 Integration
+- Vision Processing (GPT-4V)
+- Web Search Integration
+- Image Generation (DALL-E 3)
+- Text Embeddings
+- Function Calling Support
 
-**Congratulations**! You are running an application that can now interact with users in Teams App Test Tool:
+## Getting Started
 
-![basic bot](https://github.com/OfficeDev/TeamsFx/assets/9698542/bdf87809-7dd7-4926-bff0-4546ada25e4b)
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- OpenAI API key
+- Azure OpenAI subscription (optional)
 
-## What's included in the template
+### Installation
+```bash
+git clone https://github.com/yourusername/aichatbot.git
+cd aichatbot
+npm install
+```
 
-| Folder       | Contents                                            |
-| - | - |
-| `.vscode`    | VSCode files for debugging                          |
-| `appPackage` | Templates for the Teams application manifest        |
-| `env`        | Environment files                                   |
-| `infra`      | Templates for provisioning Azure resources          |
+### Configuration
+```bash
+cp env/.env.example env/.env.dev
+```
+Edit `env/.env.dev` with your API keys and configuration.
 
-The following files can be customized and demonstrate an example implementation to get you started.
+### Running the Application
+```bash
+npm run dev
+```
 
-| File                                 | Contents                                           |
-| - | - |
-|`teamsBot.ts`| Handles business logics for the Basic Bot.|
-|`index.ts`|`index.ts` is used to setup and configure the Basic Bot.|
+## Usage Examples
 
-The following are Teams Toolkit specific project files. You can [visit a complete guide on Github](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview) to understand how Teams Toolkit works.
+### File Processing
+```typescript
+// Upload and analyze file using GPT
+const results = await fileHandler.handleFileUpload(context);
+const documentId = results[0].documentId;
 
-| File                                 | Contents                                           |
-| - | - |
-|`teamsapp.yml`|This is the main Teams Toolkit project file. The project file defines two primary things:  Properties and configuration Stage definitions. |
-|`teamsapp.local.yml`|This overrides `teamsapp.yml` with actions that enable local execution and debugging.|
-|`teamsapp.testtool.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool.|
+// Ask questions about the file
+await fileHandler.processFileWithQuestion(
+    context,
+    documentId,
+    'What are the key insights from this document?'
+);
+```
 
-## Extend the Basic Bot template
+### Spreadsheet Analysis
+```typescript
+// Process Excel/CSV file using GPT
+const chartData = await fileHandler.processExcelFile(fileBuffer);
 
-Following documentation will help you to extend the Basic Bot template.
+// Generate insights
+await fileHandler.generateChartResponse(
+    context,
+    chartData,
+    'What is the total revenue by quarter?'
+);
+```
 
-- [Add or manage the environment](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-multi-env)
-- [Create multi-capability app](https://learn.microsoft.com/microsoftteams/platform/toolkit/add-capability)
-- [Add single sign on to your app](https://learn.microsoft.com/microsoftteams/platform/toolkit/add-single-sign-on)
-- [Access data in Microsoft Graph](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-sdk#microsoft-graph-scenarios)
-- [Use an existing Microsoft Entra application](https://learn.microsoft.com/microsoftteams/platform/toolkit/use-existing-aad-app)
-- [Customize the Teams app manifest](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-preview-and-customize-app-manifest)
-- Host your app in Azure by [provision cloud resources](https://learn.microsoft.com/microsoftteams/platform/toolkit/provision) and [deploy the code to cloud](https://learn.microsoft.com/microsoftteams/platform/toolkit/deploy)
-- [Collaborate on app development](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-collaboration)
-- [Set up the CI/CD pipeline](https://learn.microsoft.com/microsoftteams/platform/toolkit/use-cicd-template)
-- [Publish the app to your organization or the Microsoft Teams app store](https://learn.microsoft.com/microsoftteams/platform/toolkit/publish)
-- [Develop with Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli/debug)
-- [Preview the app on mobile clients](https://aka.ms/teamsfx-mobile)
->>>>>>> 865ffbd (Your commit message)
+### PDF Processing
+```typescript
+// Analyze PDF using GPT
+const analysis = await fileHandler.analyzeFile(fileBuffer, 'document.pdf');
 
+// Ask questions about content
+await fileHandler.processFileWithQuestion(
+    context,
+    documentId,
+    'Summarize the main points'
+);
+```
+
+## Testing
+
+See [TESTING.md](TESTING.md) for comprehensive testing guidelines, including:
+- ChatGPT integration requirements
+- File context management
+- Multi-format support
+- Error handling patterns
+- Common pitfalls to avoid
+
+### Quick Start
+```bash
+# Run all tests
+npm test
+
+# Run specific test suite
+npm test src/handlers/__tests__/FileHandler.test.ts
+
+# Run with coverage
+npm test -- --coverage
+```
+
+### Important Testing Notes
+1. Always verify GPT is used for file processing
+2. Test all supported file formats
+3. Include error cases and recovery scenarios
+4. Check cleanup procedures
+
+## Best Practices
+
+### File Handling
+1. GPT Integration
+   - Use GPT for all file processing
+   - No manual parsing libraries
+   - Unified handling across formats
+   - Proper error recovery
+
+2. Context Management
+   - Store file metadata per conversation
+   - Enhance questions with context
+   - Clean up after processing
+   - Handle multiple files properly
+
+3. Error Handling
+   - Provide clear error messages
+   - Attempt format recovery
+   - Clean up on failures
+   - Log debugging info
+
+### Development Workflow
+1. Write tests first
+2. Implement features using GPT
+3. Verify context handling
+4. Document changes
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Write tests for your changes
+4. Implement your changes using GPT for file handling
+5. Run all tests (`npm test`)
+6. Commit your changes (`git commit -m 'Add amazing feature'`)
+7. Push to the branch (`git push origin feature/amazing-feature`)
+8. Open a Pull Request
+
+Please review our [Testing Guidelines](TESTING.md) before submitting changes.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

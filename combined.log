@@ -5,3 +5,2997 @@
 2024-11-09T16:06:48.523Z [info]: Formatted Content:
 2024-11-09T16:09:28.606Z [info]: Raw Document Content:
 2024-11-09T16:09:28.608Z [info]: Formatted Content:
+2024-11-15T16:59:27.644Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.646Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.646Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.647Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.647Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.647Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T16:59:27.647Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T16:59:27.648Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T16:59:27.649Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T16:59:27.649Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T16:59:27.653Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.653Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.653Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.653Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.653Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.653Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T16:59:27.653Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T16:59:27.653Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.653Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T16:59:27.653Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.653Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.653Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.654Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T16:59:27.654Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T16:59:27.655Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.655Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.655Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.655Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.655Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.655Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T16:59:27.655Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T16:59:27.655Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T16:59:27.655Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T16:59:27.655Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T16:59:27.655Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "Another question"
+}
+2024-11-15T16:59:27.656Z [warn] File not found in active files {
+  "documentId": "test-document-id"
+}
+2024-11-15T16:59:27.657Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.657Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.657Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.658Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.658Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.658Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T16:59:27.658Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T16:59:27.658Z [info] Starting file upload process {
+  "fileName": "test.csv",
+  "contentType": "text/csv"
+}
+2024-11-15T16:59:27.658Z [info] Downloading attachment {
+  "url": "http://test.com/test.csv",
+  "name": "test.csv"
+}
+2024-11-15T16:59:27.658Z [info] Download completed {
+  "name": "test.csv",
+  "size": 8
+}
+2024-11-15T16:59:27.658Z [info] Starting GPT analysis {
+  "fileName": "test.csv",
+  "fileType": "CSV",
+  "size": 8
+}
+2024-11-15T16:59:27.658Z [info] GPT analysis completed successfully {
+  "fileName": "test.csv",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.658Z [info] File stored successfully {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T16:59:27.658Z [info] File upload process completed {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T16:59:27.658Z [info] Starting file upload process {
+  "fileName": "test.pdf",
+  "contentType": "application/pdf"
+}
+2024-11-15T16:59:27.658Z [info] Downloading attachment {
+  "url": "http://test.com/test.pdf",
+  "name": "test.pdf"
+}
+2024-11-15T16:59:27.658Z [info] Download completed {
+  "name": "test.pdf",
+  "size": 8
+}
+2024-11-15T16:59:27.658Z [info] Starting GPT analysis {
+  "fileName": "test.pdf",
+  "fileType": "PDF",
+  "size": 8
+}
+2024-11-15T16:59:27.658Z [info] GPT analysis completed successfully {
+  "fileName": "test.pdf",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.658Z [info] File stored successfully {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T16:59:27.658Z [info] File upload process completed {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T16:59:27.659Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.659Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.659Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.659Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.659Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.659Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T16:59:27.659Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T16:59:27.659Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T16:59:27.659Z [error] Error processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "error": "Processing failed",
+  "stack": "Error: Processing failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/__tests__/DocumentProcessing.integration.test.ts:154:67)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+}
+2024-11-15T16:59:27.660Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.660Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.660Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.660Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.660Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.660Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T16:59:27.664Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T16:59:27.655Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.659Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.659Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.659Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.660Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.660Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T16:59:27.660Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T16:59:27.671Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.671Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.672Z [error] Download error {
+  "name": "test.xlsx",
+  "error": "Download failed",
+  "stack": "Error: Download failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/handlers/__tests__/FileHandler.test.ts:96:63)\n    at Promise.then.completed (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/utils.js:298:28)\n    at new Promise (<anonymous>)\n    at callAsyncCircusFn (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/utils.js:231:10)\n    at _callCircusTest (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:316:40)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at _runTest (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:252:3)\n    at _runTestsForDescribeBlock (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:126:9)\n    at _runTestsForDescribeBlock (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:121:9)\n    at _runTestsForDescribeBlock (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:121:9)\n    at run (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:71:3)\n    at runAndTransformResultsToJestFormat (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)\n    at jestAdapter (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)\n    at runTestInternal (/Users/damondecrescenzo/aichatbot2/node_modules/jest-runner/build/runTest.js:367:16)\n    at runTest (/Users/damondecrescenzo/aichatbot2/node_modules/jest-runner/build/runTest.js:444:34)\n    at Object.worker (/Users/damondecrescenzo/aichatbot2/node_modules/jest-runner/build/testWorker.js:106:12)"
+}
+2024-11-15T16:59:27.672Z [error] File download failed {
+  "fileName": "test.xlsx",
+  "error": "Download failed"
+}
+2024-11-15T16:59:27.675Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.676Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.676Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.676Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.677Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.677Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T16:59:27.677Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T16:59:27.678Z [info] Processing file question {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?"
+}
+2024-11-15T16:59:27.678Z [info] Question answered successfully {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?",
+  "responseLength": 13
+}
+2024-11-15T16:59:27.678Z [info] File cleaned up {
+  "documentId": "test-document-id-1"
+}
+2024-11-15T16:59:27.682Z [info] Processing file question {
+  "documentId": "non-existent-id",
+  "question": "What is in the file?"
+}
+2024-11-15T16:59:27.682Z [warn] File not found in active files {
+  "documentId": "non-existent-id"
+}
+2024-11-15T16:59:27.683Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.684Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.684Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.684Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.684Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.684Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T16:59:27.684Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T16:59:27.684Z [info] Processing file question {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?"
+}
+2024-11-15T16:59:27.684Z [info] Question answered successfully {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?",
+  "responseLength": 13
+}
+2024-11-15T16:59:27.684Z [info] File cleaned up {
+  "documentId": "test-document-id-1"
+}
+2024-11-15T16:59:27.684Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.684Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T16:59:27.685Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.685Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.685Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.685Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T16:59:27.685Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T16:59:27.685Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T16:59:27.685Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T16:59:27.685Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T16:59:27.685Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T16:59:27.685Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T16:59:27.685Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id-2",
+  "size": 8
+}
+2024-11-15T16:59:27.685Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id-2",
+  "success": true
+}
+2024-11-15T16:59:27.685Z [info] File deleted during cleanup {
+  "documentId": "test-document-id-1"
+}
+2024-11-15T16:59:27.685Z [info] File deleted during cleanup {
+  "documentId": "test-document-id-2"
+}
+2024-11-15T16:59:27.685Z [info] Cleanup completed {
+  "filesCleared": 0
+}
+2024-11-15T17:00:11.086Z [info] Starting file upload process {
+  "fileName": "Invoice-30FDB1E9-0014.pdf",
+  "contentType": "application/pdf"
+}
+2024-11-15T17:00:11.088Z [info] Downloading attachment {
+  "url": "https://webchat.botframework.com/attachments/6lNVgDvsfnXBYZ2Tqe22ef-us/0000001/0/Invoice-30FDB1E9-0014.pdf?t=eyJhbGciOiJSUzI1NiIsImtpZCI6ImlmOEs0aFg4R1hXVnZkS3pwdFRFWFJveURTUSIsIng1dCI6ImlmOEs0aFg4R1hXVnZkS3pwdFRFWFJveURTUSIsInR5cCI6IkpXVCJ9.eyJib3QiOiJ0Y3Bib3QiLCJzaXRlIjoiTGRIakJHNzcweW8iLCJjb252IjoiNmxOVmdEdnNmblhCWVoyVHFlMjJlZi11cy0wMDAwMDAxIiwidXNlciI6IjMxYmZkNGRhLTBlM2QtNGFlZC1hZGMwLWEyNGE5ZDgwMTUyNCIsIm9yaWdpbiI6Imh0dHBzOi8vd2ViY2hhdC5ib3RmcmFtZXdvcmsuY29tLyIsIm5iZiI6MTczMTY5MDAxMCwiZXhwIjoxNzMxNjkxODEwLCJpc3MiOiJodHRwczovL3dlYmNoYXQuYm90ZnJhbWV3b3JrLmNvbS8iLCJhdWQiOiJodHRwczovL3dlYmNoYXQuYm90ZnJhbWV3b3JrLmNvbS8ifQ.XVCp2R6dLRji0MX54Ipat5i_vOlk5tUzQDr3VY1qqaCZc-RbtsBGczmB9E43oQXQRdorJHAm55ziipEdhLy_-anZioGz3_UJuk5z76_mQdDuCx670JeDH1_op2r127gK7-8ZdzrMFu8ap_kI9WXrLxw8OLXdjXlHoBH4kbSfK7vnhHRE_yyeLbFv5cHHqEWlkUomVj_NzDkmatxs2fxWEKNADYv-MkoY7A-dnx339_V61pn0rPt4yDaLKFlo-Vbik0HoB7eJldCPikUcqrHs3iQmSA7gM0hiYMXAE80tcCG7ASMMbaaxBMrqfoVgTxV8OFZPP20sP9nzPdbb73_CYw",
+  "name": "Invoice-30FDB1E9-0014.pdf"
+}
+2024-11-15T17:00:11.242Z [info] Download completed {
+  "name": "Invoice-30FDB1E9-0014.pdf",
+  "size": 41946
+}
+2024-11-15T17:00:11.243Z [info] Starting GPT analysis {
+  "fileName": "Invoice-30FDB1E9-0014.pdf",
+  "fileType": "PDF",
+  "size": 41946
+}
+2024-11-15T17:00:22.502Z [info] GPT analysis completed successfully {
+  "fileName": "Invoice-30FDB1E9-0014.pdf",
+  "analysisLength": 779,
+  "preview": "The provided text appears to be a base64 encoded representation of a PDF file. To analyze this file ..."
+}
+2024-11-15T17:00:22.503Z [info] File context added to message handler {
+  "fileName": "Invoice-30FDB1E9-0014.pdf",
+  "conversationId": "default"
+}
+2024-11-15T17:00:22.631Z [info] File stored successfully {
+  "fileName": "Invoice-30FDB1E9-0014.pdf",
+  "documentId": "https://gptsknowledgebase.blob.core.windows.net/gpts-attachments/Invoice-30FDB1E9-0014.pdf?sv=2024-11-04&spr=https&st=2024-11-15T17%3A00%3A22Z&se=2024-11-15T17%3A05%3A22Z&sr=b&sp=r&sig=BpUJg1A9Dwpg%2BjzMettnUj3OwS4LarUo1Np4fAQPZTY%3D",
+  "size": 41946
+}
+2024-11-15T17:00:22.631Z [info] File context added {
+  "fileName": "Invoice-30FDB1E9-0014.pdf",
+  "conversationId": "6lNVgDvsfnXBYZ2Tqe22ef-us"
+}
+2024-11-15T17:00:22.835Z [info] File upload process completed {
+  "fileName": "Invoice-30FDB1E9-0014.pdf",
+  "documentId": "https://gptsknowledgebase.blob.core.windows.net/gpts-attachments/Invoice-30FDB1E9-0014.pdf?sv=2024-11-04&spr=https&st=2024-11-15T17%3A00%3A22Z&se=2024-11-15T17%3A05%3A22Z&sr=b&sp=r&sig=BpUJg1A9Dwpg%2BjzMettnUj3OwS4LarUo1Np4fAQPZTY%3D",
+  "success": true
+}
+2024-11-15T17:01:15.592Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.594Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.595Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.595Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.596Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.596Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:15.596Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:15.597Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:01:15.597Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:01:15.597Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:01:15.607Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.607Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.607Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.607Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.607Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.608Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:15.608Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:15.608Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.608Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T17:01:15.608Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.608Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.608Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.608Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:15.608Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:15.610Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.610Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.610Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.610Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.610Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.610Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:15.610Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:15.610Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:01:15.610Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:01:15.611Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:01:15.611Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "Another question"
+}
+2024-11-15T17:01:15.611Z [warn] File not found in active files {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:01:15.613Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.613Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.613Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.613Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.613Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.613Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:15.613Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:15.613Z [info] Starting file upload process {
+  "fileName": "test.csv",
+  "contentType": "text/csv"
+}
+2024-11-15T17:01:15.613Z [info] Downloading attachment {
+  "url": "http://test.com/test.csv",
+  "name": "test.csv"
+}
+2024-11-15T17:01:15.613Z [info] Download completed {
+  "name": "test.csv",
+  "size": 8
+}
+2024-11-15T17:01:15.613Z [info] Starting GPT analysis {
+  "fileName": "test.csv",
+  "fileType": "CSV",
+  "size": 8
+}
+2024-11-15T17:01:15.614Z [info] GPT analysis completed successfully {
+  "fileName": "test.csv",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.614Z [info] File stored successfully {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:15.614Z [info] File upload process completed {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:15.614Z [info] Starting file upload process {
+  "fileName": "test.pdf",
+  "contentType": "application/pdf"
+}
+2024-11-15T17:01:15.614Z [info] Downloading attachment {
+  "url": "http://test.com/test.pdf",
+  "name": "test.pdf"
+}
+2024-11-15T17:01:15.614Z [info] Download completed {
+  "name": "test.pdf",
+  "size": 8
+}
+2024-11-15T17:01:15.614Z [info] Starting GPT analysis {
+  "fileName": "test.pdf",
+  "fileType": "PDF",
+  "size": 8
+}
+2024-11-15T17:01:15.614Z [info] GPT analysis completed successfully {
+  "fileName": "test.pdf",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.614Z [info] File stored successfully {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:15.614Z [info] File upload process completed {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:15.615Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.615Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.615Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.615Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.616Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.616Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:15.616Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:15.616Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:01:15.617Z [error] Error processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "error": "Processing failed",
+  "stack": "Error: Processing failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/__tests__/DocumentProcessing.integration.test.ts:154:67)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+}
+2024-11-15T17:01:15.619Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.619Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.619Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.619Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.619Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.619Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:15.619Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:15.593Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.596Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.596Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.596Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.597Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.597Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T17:01:15.597Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T17:01:15.603Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.603Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.605Z [error] Download error {
+  "name": "test.xlsx",
+  "error": "Download failed",
+  "stack": "Error: Download failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/handlers/__tests__/FileHandler.test.ts:96:63)\n    at Promise.then.completed (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/utils.js:298:28)\n    at new Promise (<anonymous>)\n    at callAsyncCircusFn (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/utils.js:231:10)\n    at _callCircusTest (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:316:40)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at _runTest (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:252:3)\n    at _runTestsForDescribeBlock (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:126:9)\n    at _runTestsForDescribeBlock (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:121:9)\n    at _runTestsForDescribeBlock (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:121:9)\n    at run (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:71:3)\n    at runAndTransformResultsToJestFormat (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)\n    at jestAdapter (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)\n    at runTestInternal (/Users/damondecrescenzo/aichatbot2/node_modules/jest-runner/build/runTest.js:367:16)\n    at runTest (/Users/damondecrescenzo/aichatbot2/node_modules/jest-runner/build/runTest.js:444:34)\n    at Object.worker (/Users/damondecrescenzo/aichatbot2/node_modules/jest-runner/build/testWorker.js:106:12)"
+}
+2024-11-15T17:01:15.605Z [error] File download failed {
+  "fileName": "test.xlsx",
+  "error": "Download failed"
+}
+2024-11-15T17:01:15.606Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.606Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.607Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.607Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.607Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.607Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T17:01:15.607Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T17:01:15.608Z [info] Processing file question {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?"
+}
+2024-11-15T17:01:15.608Z [info] Question answered successfully {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?",
+  "responseLength": 13
+}
+2024-11-15T17:01:15.608Z [info] File cleaned up {
+  "documentId": "test-document-id-1"
+}
+2024-11-15T17:01:15.617Z [info] Processing file question {
+  "documentId": "non-existent-id",
+  "question": "What is in the file?"
+}
+2024-11-15T17:01:15.617Z [warn] File not found in active files {
+  "documentId": "non-existent-id"
+}
+2024-11-15T17:01:15.620Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.620Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.620Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.620Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.620Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.620Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T17:01:15.620Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T17:01:15.620Z [info] Processing file question {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?"
+}
+2024-11-15T17:01:15.621Z [info] Question answered successfully {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?",
+  "responseLength": 13
+}
+2024-11-15T17:01:15.621Z [info] File cleaned up {
+  "documentId": "test-document-id-1"
+}
+2024-11-15T17:01:15.622Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.622Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:15.622Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.622Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.623Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.623Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T17:01:15.623Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T17:01:15.623Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:15.623Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T17:01:15.623Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:15.623Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:15.623Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:15.623Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id-2",
+  "size": 8
+}
+2024-11-15T17:01:15.623Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id-2",
+  "success": true
+}
+2024-11-15T17:01:15.624Z [info] File deleted during cleanup {
+  "documentId": "test-document-id-1"
+}
+2024-11-15T17:01:15.624Z [info] File deleted during cleanup {
+  "documentId": "test-document-id-2"
+}
+2024-11-15T17:01:15.624Z [info] Cleanup completed {
+  "filesCleared": 0
+}
+2024-11-15T17:01:45.110Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.112Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.112Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.112Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.112Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.112Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:45.112Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:45.113Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:01:45.113Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:01:45.113Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:01:45.117Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.117Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.117Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.117Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.117Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.117Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:45.117Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:45.117Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.117Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T17:01:45.118Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.118Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.118Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.118Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:45.118Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:45.119Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.119Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.119Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.119Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.119Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.119Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:45.119Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:45.119Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:01:45.119Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:01:45.119Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:01:45.119Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "Another question"
+}
+2024-11-15T17:01:45.119Z [warn] File not found in active files {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:01:45.120Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.120Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.120Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.120Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.120Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.120Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:45.121Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:45.121Z [info] Starting file upload process {
+  "fileName": "test.csv",
+  "contentType": "text/csv"
+}
+2024-11-15T17:01:45.121Z [info] Downloading attachment {
+  "url": "http://test.com/test.csv",
+  "name": "test.csv"
+}
+2024-11-15T17:01:45.121Z [info] Download completed {
+  "name": "test.csv",
+  "size": 8
+}
+2024-11-15T17:01:45.121Z [info] Starting GPT analysis {
+  "fileName": "test.csv",
+  "fileType": "CSV",
+  "size": 8
+}
+2024-11-15T17:01:45.121Z [info] GPT analysis completed successfully {
+  "fileName": "test.csv",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.121Z [info] File stored successfully {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:45.121Z [info] File upload process completed {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:45.121Z [info] Starting file upload process {
+  "fileName": "test.pdf",
+  "contentType": "application/pdf"
+}
+2024-11-15T17:01:45.121Z [info] Downloading attachment {
+  "url": "http://test.com/test.pdf",
+  "name": "test.pdf"
+}
+2024-11-15T17:01:45.121Z [info] Download completed {
+  "name": "test.pdf",
+  "size": 8
+}
+2024-11-15T17:01:45.121Z [info] Starting GPT analysis {
+  "fileName": "test.pdf",
+  "fileType": "PDF",
+  "size": 8
+}
+2024-11-15T17:01:45.121Z [info] GPT analysis completed successfully {
+  "fileName": "test.pdf",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.121Z [info] File stored successfully {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:45.121Z [info] File upload process completed {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:45.122Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.122Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.122Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.122Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.122Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.122Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:45.122Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:45.122Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:01:45.122Z [error] Error processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "error": "Processing failed",
+  "stack": "Error: Processing failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/__tests__/DocumentProcessing.integration.test.ts:154:67)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+}
+2024-11-15T17:01:45.122Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.122Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.122Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.122Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.122Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.122Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:01:45.123Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:01:45.110Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.112Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.112Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.112Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.112Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.112Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T17:01:45.113Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T17:01:45.117Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.117Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.117Z [error] Download error {
+  "name": "test.xlsx",
+  "error": "Download failed",
+  "stack": "Error: Download failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/handlers/__tests__/FileHandler.test.ts:96:63)\n    at Promise.then.completed (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/utils.js:298:28)\n    at new Promise (<anonymous>)\n    at callAsyncCircusFn (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/utils.js:231:10)\n    at _callCircusTest (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:316:40)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at _runTest (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:252:3)\n    at _runTestsForDescribeBlock (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:126:9)\n    at _runTestsForDescribeBlock (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:121:9)\n    at _runTestsForDescribeBlock (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:121:9)\n    at run (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/run.js:71:3)\n    at runAndTransformResultsToJestFormat (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)\n    at jestAdapter (/Users/damondecrescenzo/aichatbot2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)\n    at runTestInternal (/Users/damondecrescenzo/aichatbot2/node_modules/jest-runner/build/runTest.js:367:16)\n    at runTest (/Users/damondecrescenzo/aichatbot2/node_modules/jest-runner/build/runTest.js:444:34)\n    at Object.worker (/Users/damondecrescenzo/aichatbot2/node_modules/jest-runner/build/testWorker.js:106:12)"
+}
+2024-11-15T17:01:45.117Z [error] File download failed {
+  "fileName": "test.xlsx",
+  "error": "Download failed"
+}
+2024-11-15T17:01:45.118Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.118Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.119Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.119Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.119Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.119Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T17:01:45.119Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T17:01:45.119Z [info] Processing file question {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?"
+}
+2024-11-15T17:01:45.119Z [info] Question answered successfully {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?",
+  "responseLength": 13
+}
+2024-11-15T17:01:45.120Z [info] File cleaned up {
+  "documentId": "test-document-id-1"
+}
+2024-11-15T17:01:45.122Z [info] Processing file question {
+  "documentId": "non-existent-id",
+  "question": "What is in the file?"
+}
+2024-11-15T17:01:45.122Z [warn] File not found in active files {
+  "documentId": "non-existent-id"
+}
+2024-11-15T17:01:45.123Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.123Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.123Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.123Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.123Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.123Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T17:01:45.123Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T17:01:45.123Z [info] Processing file question {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?"
+}
+2024-11-15T17:01:45.123Z [info] Question answered successfully {
+  "documentId": "test-document-id-1",
+  "question": "What is in the file?",
+  "responseLength": 13
+}
+2024-11-15T17:01:45.123Z [info] File cleaned up {
+  "documentId": "test-document-id-1"
+}
+2024-11-15T17:01:45.123Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.123Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:01:45.123Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.123Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.123Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.123Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "size": 8
+}
+2024-11-15T17:01:45.123Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id-1",
+  "success": true
+}
+2024-11-15T17:01:45.123Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:01:45.123Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T17:01:45.123Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T17:01:45.123Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:01:45.124Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:01:45.124Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id-2",
+  "size": 8
+}
+2024-11-15T17:01:45.124Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id-2",
+  "success": true
+}
+2024-11-15T17:01:45.124Z [info] File deleted during cleanup {
+  "documentId": "test-document-id-1"
+}
+2024-11-15T17:01:45.124Z [info] File deleted during cleanup {
+  "documentId": "test-document-id-2"
+}
+2024-11-15T17:01:45.124Z [info] Cleanup completed {
+  "filesCleared": 0
+}
+2024-11-15T17:02:11.138Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:11.141Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:11.141Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:11.141Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:11.141Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:11.142Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:11.142Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:11.143Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:11.143Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:02:11.143Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:11.150Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:11.150Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:11.151Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:11.151Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:11.151Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:11.151Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:11.151Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:11.151Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:11.151Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T17:02:11.151Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:11.151Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:11.151Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:11.151Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:11.151Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:11.152Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:11.152Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:11.152Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:11.152Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:11.152Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:11.152Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:11.152Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:11.152Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:11.152Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:02:11.152Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:11.152Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "Another question"
+}
+2024-11-15T17:02:11.152Z [warn] File not found in active files {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:11.153Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:11.153Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:11.153Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:11.153Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:11.154Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:11.154Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:11.154Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:11.154Z [info] Starting file upload process {
+  "fileName": "test.csv",
+  "contentType": "text/csv"
+}
+2024-11-15T17:02:11.154Z [info] Downloading attachment {
+  "url": "http://test.com/test.csv",
+  "name": "test.csv"
+}
+2024-11-15T17:02:11.154Z [info] Download completed {
+  "name": "test.csv",
+  "size": 8
+}
+2024-11-15T17:02:11.154Z [info] Starting GPT analysis {
+  "fileName": "test.csv",
+  "fileType": "CSV",
+  "size": 8
+}
+2024-11-15T17:02:11.154Z [info] GPT analysis completed successfully {
+  "fileName": "test.csv",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:11.154Z [info] File stored successfully {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:11.154Z [info] File upload process completed {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:11.154Z [info] Starting file upload process {
+  "fileName": "test.pdf",
+  "contentType": "application/pdf"
+}
+2024-11-15T17:02:11.154Z [info] Downloading attachment {
+  "url": "http://test.com/test.pdf",
+  "name": "test.pdf"
+}
+2024-11-15T17:02:11.154Z [info] Download completed {
+  "name": "test.pdf",
+  "size": 8
+}
+2024-11-15T17:02:11.154Z [info] Starting GPT analysis {
+  "fileName": "test.pdf",
+  "fileType": "PDF",
+  "size": 8
+}
+2024-11-15T17:02:11.154Z [info] GPT analysis completed successfully {
+  "fileName": "test.pdf",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:11.154Z [info] File stored successfully {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:11.154Z [info] File upload process completed {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:11.155Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:11.155Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:11.155Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:11.155Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:11.155Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:11.155Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:11.155Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:11.155Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:11.155Z [error] Error processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "error": "Processing failed",
+  "stack": "Error: Processing failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/__tests__/DocumentProcessing.integration.test.ts:154:67)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+}
+2024-11-15T17:02:11.156Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:11.156Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:11.156Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:11.156Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:11.156Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:11.156Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:11.156Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.266Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.267Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.268Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.268Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.268Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:43.269Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.269Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.270Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:43.270Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:02:43.270Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:43.276Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.276Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.277Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.277Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.277Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:43.277Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.277Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.277Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.277Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T17:02:43.277Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.277Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.277Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:43.277Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.277Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.278Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.278Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.278Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.278Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.279Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:43.279Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.279Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.279Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:43.279Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:02:43.279Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:43.279Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "Another question"
+}
+2024-11-15T17:02:43.279Z [warn] File not found in active files {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:43.280Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.280Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.280Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.280Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.280Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:43.280Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.280Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.280Z [info] Starting file upload process {
+  "fileName": "test.csv",
+  "contentType": "text/csv"
+}
+2024-11-15T17:02:43.280Z [info] Downloading attachment {
+  "url": "http://test.com/test.csv",
+  "name": "test.csv"
+}
+2024-11-15T17:02:43.280Z [info] Download completed {
+  "name": "test.csv",
+  "size": 8
+}
+2024-11-15T17:02:43.280Z [info] Starting GPT analysis {
+  "fileName": "test.csv",
+  "fileType": "CSV",
+  "size": 8
+}
+2024-11-15T17:02:43.280Z [info] GPT analysis completed successfully {
+  "fileName": "test.csv",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:43.280Z [info] File stored successfully {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.281Z [info] File upload process completed {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.281Z [info] Starting file upload process {
+  "fileName": "test.pdf",
+  "contentType": "application/pdf"
+}
+2024-11-15T17:02:43.281Z [info] Downloading attachment {
+  "url": "http://test.com/test.pdf",
+  "name": "test.pdf"
+}
+2024-11-15T17:02:43.281Z [info] Download completed {
+  "name": "test.pdf",
+  "size": 8
+}
+2024-11-15T17:02:43.281Z [info] Starting GPT analysis {
+  "fileName": "test.pdf",
+  "fileType": "PDF",
+  "size": 8
+}
+2024-11-15T17:02:43.281Z [info] GPT analysis completed successfully {
+  "fileName": "test.pdf",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:43.281Z [info] File stored successfully {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.281Z [info] File upload process completed {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.283Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.283Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.283Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.283Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.283Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:43.283Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.283Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.283Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:43.283Z [error] Error processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "error": "Processing failed",
+  "stack": "Error: Processing failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/__tests__/DocumentProcessing.integration.test.ts:154:67)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+}
+2024-11-15T17:02:43.284Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.284Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.284Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.284Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.284Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test response..."
+}
+2024-11-15T17:02:43.284Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.284Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.495Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.497Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.497Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.497Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.498Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:43.498Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.498Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.499Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in the file?"
+}
+2024-11-15T17:02:43.499Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in the file?",
+  "responseLength": 13
+}
+2024-11-15T17:02:43.499Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:43.503Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.503Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.504Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.504Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.504Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:43.504Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.504Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.504Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.504Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T17:02:43.505Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.505Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.505Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:43.505Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.505Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.506Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.506Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.506Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.506Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.506Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:43.506Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.506Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.507Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:43.507Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:02:43.507Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:43.507Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "Another question"
+}
+2024-11-15T17:02:43.507Z [warn] File not found in active files {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:43.508Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.508Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.508Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.508Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.508Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:43.508Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.508Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.509Z [info] Starting file upload process {
+  "fileName": "test.csv",
+  "contentType": "text/csv"
+}
+2024-11-15T17:02:43.509Z [info] Downloading attachment {
+  "url": "http://test.com/test.csv",
+  "name": "test.csv"
+}
+2024-11-15T17:02:43.509Z [info] Download completed {
+  "name": "test.csv",
+  "size": 8
+}
+2024-11-15T17:02:43.509Z [info] Starting GPT analysis {
+  "fileName": "test.csv",
+  "fileType": "CSV",
+  "size": 8
+}
+2024-11-15T17:02:43.509Z [info] GPT analysis completed successfully {
+  "fileName": "test.csv",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:43.509Z [info] File stored successfully {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.509Z [info] File upload process completed {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.509Z [info] Starting file upload process {
+  "fileName": "test.pdf",
+  "contentType": "application/pdf"
+}
+2024-11-15T17:02:43.509Z [info] Downloading attachment {
+  "url": "http://test.com/test.pdf",
+  "name": "test.pdf"
+}
+2024-11-15T17:02:43.509Z [info] Download completed {
+  "name": "test.pdf",
+  "size": 8
+}
+2024-11-15T17:02:43.509Z [info] Starting GPT analysis {
+  "fileName": "test.pdf",
+  "fileType": "PDF",
+  "size": 8
+}
+2024-11-15T17:02:43.509Z [info] GPT analysis completed successfully {
+  "fileName": "test.pdf",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:43.509Z [info] File stored successfully {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.509Z [info] File upload process completed {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.510Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.510Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.510Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.510Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.510Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:43.510Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.510Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:43.510Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:43.510Z [error] Error processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "error": "Processing failed",
+  "stack": "Error: Processing failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/handlers/__tests__/FileHandler.test.ts:171:67)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+}
+2024-11-15T17:02:43.511Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:43.511Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:43.511Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:43.511Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:43.511Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:43.511Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:43.511Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:49.822Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:49.824Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:49.825Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:49.825Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:49.825Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:49.825Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:49.826Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:49.826Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in the file?"
+}
+2024-11-15T17:02:49.826Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in the file?",
+  "responseLength": 13
+}
+2024-11-15T17:02:49.827Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:49.828Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:49.829Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:49.829Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:49.829Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:49.829Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:49.829Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:49.829Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:49.829Z [info] Starting file upload process {
+  "fileName": "test2.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:49.829Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test2.xlsx"
+}
+2024-11-15T17:02:49.829Z [info] Download completed {
+  "name": "test2.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:49.830Z [info] Starting GPT analysis {
+  "fileName": "test2.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:49.830Z [info] GPT analysis completed successfully {
+  "fileName": "test2.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:49.830Z [info] File stored successfully {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:49.830Z [info] File upload process completed {
+  "fileName": "test2.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:49.830Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:49.830Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:49.830Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:49.831Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:49.831Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:49.831Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:49.831Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:49.831Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:49.831Z [info] Question answered successfully {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "responseLength": 13
+}
+2024-11-15T17:02:49.831Z [info] File cleaned up {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:49.831Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "Another question"
+}
+2024-11-15T17:02:49.831Z [warn] File not found in active files {
+  "documentId": "test-document-id"
+}
+2024-11-15T17:02:49.832Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:49.832Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:49.832Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:49.832Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:49.832Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:49.832Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:49.832Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:49.832Z [info] Starting file upload process {
+  "fileName": "test.csv",
+  "contentType": "text/csv"
+}
+2024-11-15T17:02:49.832Z [info] Downloading attachment {
+  "url": "http://test.com/test.csv",
+  "name": "test.csv"
+}
+2024-11-15T17:02:49.832Z [info] Download completed {
+  "name": "test.csv",
+  "size": 8
+}
+2024-11-15T17:02:49.833Z [info] Starting GPT analysis {
+  "fileName": "test.csv",
+  "fileType": "CSV",
+  "size": 8
+}
+2024-11-15T17:02:49.833Z [info] GPT analysis completed successfully {
+  "fileName": "test.csv",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:49.833Z [info] File stored successfully {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:49.833Z [info] File upload process completed {
+  "fileName": "test.csv",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:49.833Z [info] Starting file upload process {
+  "fileName": "test.pdf",
+  "contentType": "application/pdf"
+}
+2024-11-15T17:02:49.833Z [info] Downloading attachment {
+  "url": "http://test.com/test.pdf",
+  "name": "test.pdf"
+}
+2024-11-15T17:02:49.833Z [info] Download completed {
+  "name": "test.pdf",
+  "size": 8
+}
+2024-11-15T17:02:49.833Z [info] Starting GPT analysis {
+  "fileName": "test.pdf",
+  "fileType": "PDF",
+  "size": 8
+}
+2024-11-15T17:02:49.833Z [info] GPT analysis completed successfully {
+  "fileName": "test.pdf",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:49.833Z [info] File stored successfully {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:49.833Z [info] File upload process completed {
+  "fileName": "test.pdf",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:49.834Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:49.834Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:49.834Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:49.834Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:49.834Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:49.834Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:49.834Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
+2024-11-15T17:02:49.835Z [info] Processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?"
+}
+2024-11-15T17:02:49.837Z [error] Error processing file question {
+  "documentId": "test-document-id",
+  "question": "What is in this file?",
+  "error": "Processing failed",
+  "stack": "Error: Processing failed\n    at Object.<anonymous> (/Users/damondecrescenzo/aichatbot2/src/handlers/__tests__/FileHandler.test.ts:171:67)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+}
+2024-11-15T17:02:49.837Z [info] Starting file upload process {
+  "fileName": "test.xlsx",
+  "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+}
+2024-11-15T17:02:49.837Z [info] Downloading attachment {
+  "url": "http://test.com/test.xlsx",
+  "name": "test.xlsx"
+}
+2024-11-15T17:02:49.838Z [info] Download completed {
+  "name": "test.xlsx",
+  "size": 8
+}
+2024-11-15T17:02:49.838Z [info] Starting GPT analysis {
+  "fileName": "test.xlsx",
+  "fileType": "Excel",
+  "size": 8
+}
+2024-11-15T17:02:49.838Z [info] GPT analysis completed successfully {
+  "fileName": "test.xlsx",
+  "analysisLength": 13,
+  "preview": "Test analysis..."
+}
+2024-11-15T17:02:49.838Z [info] File stored successfully {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "size": 8
+}
+2024-11-15T17:02:49.838Z [info] File upload process completed {
+  "fileName": "test.xlsx",
+  "documentId": "test-document-id",
+  "success": true
+}
