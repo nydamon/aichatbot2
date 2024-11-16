@@ -5,10 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'appPackage/**'
-  pull_request:
-    branches: [ main ]
-    paths:
-      - 'appPackage/**'
+  workflow_dispatch:
 
 jobs:
   package:
@@ -26,21 +23,27 @@ jobs:
     - name: Install Teams toolkit
       run: npm install -g @microsoft/teamsfx-cli
 
-    - name: Package Teams app
-      run: teamsfx package
+    - name: Create build directory
+      run: mkdir -p build/appPackage
+
+    - name: Copy app package files
+      run: cp -r appPackage/* build/appPackage/
+
+    - name: Create Teams app package
+      run: cd build/appPackage && zip -r ../teams-package.zip *
 
     - name: Upload package artifact
       uses: actions/upload-artifact@v3
       with:
         name: teams-package
-        path: build/appPackage/*.zip
+        path: build/teams-package.zip
         retention-days: 5
 
     - name: Create Release
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: softprops/action-gh-release@v1
       with:
-        files: build/appPackage/*.zip
+        files: build/teams-package.zip
         tag_name: v${{ github.run_number }}
         name: Release ${{ github.run_number }}
         body: |
