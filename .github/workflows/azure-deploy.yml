@@ -4,10 +4,15 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual deployment'
+        required: false
+        default: 'Manual trigger'
 
 env:
   NODE_VERSION: '18.x'
-  AZURE_WEBAPP_NAME: creditpros-teams-bot    # Replace with your Azure Web App name
+  AZURE_WEBAPP_NAME: creditpros-teams-bot
   AZURE_WEBAPP_PACKAGE_PATH: '.'
 
 jobs:

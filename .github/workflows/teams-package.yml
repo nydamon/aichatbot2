@@ -6,6 +6,11 @@ on:
     paths:
       - 'appPackage/**'
   workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual package creation'
+        required: false
+        default: 'Manual trigger'
 
 jobs:
   package:
@@ -24,13 +29,20 @@ jobs:
       run: npm install -g @microsoft/teamsfx-cli
 
     - name: Create build directory
-      run: mkdir -p build/appPackage
+      run: |
+        mkdir -p build/appPackage
+        echo "Created build directory structure"
 
     - name: Copy app package files
-      run: cp -r appPackage/* build/appPackage/
+      run: |
+        cp -r appPackage/* build/appPackage/
+        echo "Copied app package files"
 
     - name: Create Teams app package
-      run: cd build/appPackage && zip -r ../teams-package.zip *
+      run: |
+        cd build/appPackage
+        zip -r ../teams-package.zip *
+        echo "Created Teams app package"
 
     - name: Upload package artifact
       uses: actions/upload-artifact@v3
