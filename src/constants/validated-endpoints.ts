@@ -7377,4 +7377,13 @@ export const VALIDATED_CONSTANTS = {
             ASSISTANT: 'assistant' as const
         }
     }
+,
+    CONVERSATION: {
+        MAX_HISTORY_LENGTH: 10,
+        ROLES: {
+            SYSTEM: 'system' as const,
+            USER: 'user' as const,
+            ASSISTANT: 'assistant' as const
+        }
+    }
 } as const;

@@ -1,0 +1,52 @@
+name: Package Teams App
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'appPackage/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'appPackage/**'
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+
+    - name: Install Teams toolkit
+      run: npm install -g @microsoft/teamsfx-cli
+
+    - name: Package Teams app
+      run: teamsfx package
+
+    - name: Upload package artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: teams-package
+        path: build/appPackage/*.zip
+        retention-days: 5
+
+    - name: Create Release
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: build/appPackage/*.zip
+        tag_name: v${{ github.run_number }}
+        name: Release ${{ github.run_number }}
+        body: |
+          Teams app package for release ${{ github.run_number }}
+          
+          Changes in this release:
+          ${{ github.event.head_commit.message }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

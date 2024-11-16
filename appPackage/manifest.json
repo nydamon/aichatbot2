@@ -2,12 +2,9 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
     "manifestVersion": "1.17",
     "version": "1.0.0",
-    "id": "14bf8ac2-37a9-457e-8fdb-4843b98f86a9",
+    "id": "e5438459-9e9a-4c3e-abc1-5ad7e49a5657",
     "developer": {
-        "name": "Damon's AI Chat Bot",
-        "websiteUrl": "https://www.example.com",
-        "privacyUrl": "https://www.example.com/privacy",
-        "termsOfUseUrl": "https://www.example.com/termsofuse",
+        "name": "The Credit Pros",
         "mpnId": ""
     },
     "icons": {
@@ -15,23 +12,23 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "AI Chat Bot",
-        "full": "AI Chat Bot powered by Azure OpenAI"
+        "short": "The Credit Pros ChatGPT",
+        "full": "The Credit Pros ChatGPT powered by Azure OpenAI"
     },
     "description": {
         "short": "AI assistant that helps answer questions using Azure OpenAI",
-        "full": "An AI-powered chat bot that leverages Azure OpenAI and Azure Cognitive Search to provide intelligent responses and help users find information."
+        "full": "An AI-powered chat bot that leverages Azure OpenAI and Azure Cognitive Search to provide intelligent responses and help users find information. Supports file handling, image processing, and Excel operations."
     },
     "accentColor": "#FFFFFF",
     "bots": [
         {
-            "botId": "14bf8ac2-37a9-457e-8fdb-4843b98f86a9",
+            "botId": "e5438459-9e9a-4c3e-abc1-5ad7e49a5657",
             "scopes": [
                 "personal",
                 "team",
                 "groupChat"
             ],
-            "supportsFiles": false,
+            "supportsFiles": true,
             "isNotificationOnly": false,
             "commandLists": [
                 {
@@ -46,8 +43,20 @@
                             "description": "Learn how to use the bot"
                         },
                         {
-                            "title": "Hi",
+                            "title": "hi",
                             "description": "Say hi to the bot"
+                        },
+                        {
+                            "title": "process image",
+                            "description": "Process and analyze an image"
+                        },
+                        {
+                            "title": "process excel",
+                            "description": "Process Excel file data"
+                        },
+                        {
+                            "title": "process file",
+                            "description": "Process and analyze document files"
                         }
                     ]
                 }
@@ -60,10 +69,11 @@
     ],
     "validDomains": [
         "token.botframework.com",
-        "*.ngrok.io"
+        "*.ngrok-free.app",
+        "creditpros-teams-bot.azurewebsites.net"
     ],
     "webApplicationInfo": {
-        "id": "14bf8ac2-37a9-457e-8fdb-4843b98f86a9",
+        "id": "e5438459-9e9a-4c3e-abc1-5ad7e49a5657",
         "resource": "https://api.botframework.com"
     }
 }
