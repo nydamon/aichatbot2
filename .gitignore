@@ -1,25 +1,57 @@
-# TeamsFx files
-env/.env.*.user
-env/.env.local
-.localConfigs.testTool
-.localConfigs
-.notification.localstore.json
-.notification.testtoolstore.json
-appPackage/build
-
-# dependencies
+# Dependencies
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# misc
+# Environment variables
 .env
-.deployment
+.env.local
+.env.*.local
+env/
+
+# Build output
+dist/
+build/
+out/
+*.zip
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Operating System
 .DS_Store
+Thumbs.db
 
-# build
-lib/
+# Logs
+logs/
+*.log
+combined.log
 
-# Dev tool directories
-/devTools/env/.env.dev
-aichatbot-clean/
-env/.env.dev
-devTools/
+# Test coverage
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Azure Functions artifacts
+bin/
+obj/
+appsettings.json
+local.settings.json
+
+# Teams artifacts
+*.zip
+*.msapp
+.deployment
+
+# Misc
+*.pem
+*.key
+*.cert
+*.pfx
