@@ -5,16 +5,20 @@ on:
     branches: [ main ]
     paths:
       - 'appPackage/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'appPackage/**'
   workflow_dispatch:
-    inputs:
-      reason:
-        description: 'Reason for manual package creation'
-        required: false
-        default: 'Manual trigger'
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   package:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
     - uses: actions/checkout@v3
