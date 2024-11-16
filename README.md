@@ -22,6 +22,15 @@ A Microsoft Teams bot powered by Azure OpenAI that helps The Credit Pros team me
 
 The bot is automatically deployed using GitHub Actions to Azure App Service. Updates to the Teams app package are also automated through GitHub Actions workflows.
 
+### Deployment Process
+
+1. Code changes are pushed to the main branch
+2. GitHub Actions automatically:
+   - Builds and tests the code
+   - Deploys to Azure App Service
+   - Creates a Teams app package
+3. New versions are automatically available to users
+
 ## Environment Setup
 
 The bot requires the following environment variables:
@@ -50,3 +59,9 @@ The bot can be installed in Microsoft Teams and provides the following commands:
 - Private repository
 - Secure credential management through GitHub Secrets
 - Azure AD authentication
+
+## Continuous Integration
+
+- Automated testing on each commit
+- Automated deployments to Azure
+- Automated Teams package creation
