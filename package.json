@@ -1,5 +1,5 @@
 {
-    "name": "aichatbot",
+    "name": "creditpros-teams-bot",
     "version": "1.0.0",
     "engines": {
         "node": ">=16"
@@ -8,7 +8,8 @@
         "start": "ts-node src/index.ts",
         "dev": "nodemon --exec ts-node src/index.ts",
         "build": "tsc",
-        "test": "jest --maxWorkers=12",
+        "postinstall": "npm run build",
+        "test": "jest --maxWorkers=12 --passWithNoTests",
         "test:watch": "jest --watch --maxWorkers=12",
         "test:coverage": "jest --coverage --maxWorkers=12",
         "clean": "rm -rf dist node_modules package-lock.json",
